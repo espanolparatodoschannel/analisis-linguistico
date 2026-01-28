@@ -1,0 +1,80 @@
+/* Responsive Adjustments */
+
+/* Tablet & Up */
+@media (min-width: 768px) {
+    :root {
+        --text-base: 1.125rem;
+    }
+
+    /* Stack vertically */
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: var(--text-2xl);
+    }
+}
+
+/* Desktop & Up */
+@media (min-width: 1024px) {
+    .app-container {
+        padding: var(--space-6);
+    }
+
+    h1 {
+        font-size: var(--text-3xl);
+    }
+
+    .logo-img {
+        height: 120px;
+        width: 120px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        /* Maintain vertical stack */
+        gap: var(--space-8);
+        max-width: 900px;
+        /* Limit width for better readability on wide screens */
+        margin: 0 auto;
+    }
+}
+
+/* Mobile (All sizes below tablet) */
+@media (max-width: 767px) {
+    :root {
+        --text-base: 0.875rem;
+    }
+
+    header {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+        align-items: stretch;
+        /* Ensure children take full width if needed */
+    }
+
+    /* Add space between title and selector specifically */
+    header h1 {
+        margin-bottom: var(--space-2);
+    }
+
+    .accordion-header {
+        font-size: var(--text-base);
+    }
+}
+
+/* Touch Targets for Mobile */
+@media (hover: none) and (pointer: coarse) {
+
+    .accordion-header,
+    #language-selector,
+    .btn-primary {
+        min-height: 48px;
+    }
+
+    .item-card {
+        padding: var(--space-2) 0;
+    }
+}

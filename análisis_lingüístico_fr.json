@@ -1,0 +1,137 @@
+[
+    {
+        "titulo": "Analyse Linguistique",
+        "conectores_logicos": [
+            {
+                "termino": "Soudain",
+                "explicacion": "Connecteur temporel qui introduit un changement brusque ou inattendu dans l'action.",
+                "ejemplo": "Soudain, les murs de béton disparurent."
+            },
+            {
+                "termino": "Par exemple",
+                "explicacion": "Connecteur qui introduit une clarification ou un cas spécifique pour illustrer une idée générale.",
+                "ejemplo": "Par exemple, ce flacon bleu contient la sensation de voir la mer pour la première fois."
+            },
+            {
+                "termino": "Mais",
+                "explicacion": "Connecteur adversatif qui introduit une idée qui contraste ou s'oppose à ce qui a été dit précédemment.",
+                "ejemplo": "C'était un beau rêve, mais je n'en voulais plus."
+            },
+            {
+                "termino": "Après",
+                "explicacion": "Connecteur temporel qui indique une postériorité dans la séquence d'actions.",
+                "ejemplo": "Après quelques secondes, une lumière blanche remplit le récipient."
+            },
+            {
+                "termino": "Parfois",
+                "explicacion": "Connecteur qui exprime la fréquence ou introduit une idée qui n'est pas constante, mais occasionnelle.",
+                "ejemplo": "Parfois, pour avancer, il est nécessaire de lâcher ce qui ne nous appartient plus."
+            }
+        ],
+        "verbos_y_adjetivos": [
+            {
+                "termino": "exposaient",
+                "explicacion": "Verbe au passé (3ème personne du pluriel) qui signifie montrer ou présenter quelque chose au public.",
+                "ejemplo": "Sur les étagères en verre, les vendeurs exposaient des flacons transparents."
+            },
+            {
+                "termino": "impeccable",
+                "explicacion": "Adjectif qui décrit quelque chose de parfait, sans aucun défaut ou faute.",
+                "ejemplo": "un jeune homme qui portait un costume gris impeccable"
+            },
+            {
+                "termino": "récurrent",
+                "explicacion": "Adjectif qui décrit quelque chose qui se répète ou réapparaît fréquemment.",
+                "ejemplo": "Elena se souvint d'un rêve récurrent qu'elle faisait depuis son enfance."
+            },
+            {
+                "termino": "lâcher",
+                "explicacion": "Verbe à l'infinitif qui signifie laisser aller, libérer ou se détacher de quelque chose.",
+                "ejemplo": "il est nécessaire de lâcher ce qui ne nous appartient plus."
+            }
+        ],
+        "sustantivos_clave": [
+            {
+                "termino": "ruelle",
+                "explicacion": "Rue étroite, généralement entre des bâtiments.",
+                "ejemplo": "Elena marchait dans une ruelle étroite."
+            },
+            {
+                "termino": "souvenirs",
+                "explicacion": "Mémoires, images ou impressions du passé conservées dans l'esprit.",
+                "ejemplo": "Vendent-ils vraiment des souvenirs ici ?"
+            },
+            {
+                "termino": "flacon",
+                "explicacion": "Récipient, généralement en verre, avec un couvercle, utilisé pour conserver des choses.",
+                "ejemplo": "Ce flacon bleu contient la sensation de voir la mer pour la première fois."
+            },
+            {
+                "termino": "échange",
+                "explicacion": "Action de donner une chose et d'en recevoir une autre en retour.",
+                "ejemplo": "Mais nous acceptons aussi les échanges."
+            },
+            {
+                "termino": "compétence",
+                "explicacion": "Capacité ou habileté à bien faire quelque chose.",
+                "ejemplo": "Celui-ci contient la compétence de parler couramment trois langues."
+            }
+        ],
+        "expresiones_idiomaticas": [
+            {
+                "termino": "laisser aller",
+                "explicacion": "Accepter de perdre quelque chose ou quelqu'un ; se détacher émotionnellement.",
+                "ejemplo": "Elle décida qu'il était temps de le laisser aller."
+            },
+            {
+                "termino": "faire de la place",
+                "explicacion": "Créer l'opportunité ou la capacité pour que quelque chose de nouveau arrive ou entre.",
+                "ejemplo": "faire de la place pour l'inattendu."
+            },
+            {
+                "termino": "se sentir plus légère",
+                "explicacion": "Ressentir un soulagement émotionnel, comme si un poids avait été enlevé.",
+                "ejemplo": "Elena sortit du marché en se sentant plus légère."
+            }
+        ],
+        "funciones_comunicativas": [
+            {
+                "termino": "Décrire des lieux et des situations",
+                "explicacion": "Utiliser le langage pour peindre une image détaillée d'un scénario ou d'une circonstance.",
+                "ejemplo": "devant elle s'ouvrit une place illuminée par de petites lumières flottantes."
+            },
+            {
+                "termino": "Exprimer de la curiosité et poser des questions",
+                "explicacion": "Utiliser des structures interrogatives pour obtenir des informations ou montrer de l'intérêt.",
+                "ejemplo": "— Vendent-ils vraiment des souvenirs ici ? / — Et que se passe-t-il si quelqu'un veut récupérer un souvenir qu'il a vendu ?"
+            },
+            {
+                "termino": "Raconter une séquence d'événements dans le passé",
+                "explicacion": "Relater des actions et des événements survenus antérieurement, en établissant un ordre temporel.",
+                "ejemplo": "Le vendeur prit un flacon vide et demanda à Elena de fermer les yeux... Après quelques secondes, une lumière blanche remplit le récipient."
+            }
+        ],
+        "palabras_clave": [
+            "ruelle",
+            "place",
+            "marché",
+            "souvenirs",
+            "vendeur",
+            "flacons",
+            "transparents",
+            "mémoires",
+            "oublier",
+            "triste",
+            "échange",
+            "rêve",
+            "se concentrer",
+            "compétence",
+            "aisance",
+            "légère",
+            "illusion",
+            "fatigue",
+            "avancer",
+            "inattendu"
+        ]
+    }
+]

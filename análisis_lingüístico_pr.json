@@ -1,0 +1,137 @@
+[
+    {
+        "titulo": "Análise Linguística",
+        "conectores_logicos": [
+            {
+                "termino": "De repente",
+                "explicacion": "Conector temporal que introduz uma mudança brusca ou inesperada na ação.",
+                "ejemplo": "De repente, as paredes de concreto desapareceram."
+            },
+            {
+                "termino": "Por exemplo",
+                "explicacion": "Conector que introduz um esclarecimento ou um caso específico para ilustrar uma ideia geral.",
+                "ejemplo": "Por exemplo, este frasco azul contém a sensação de ver o mar pela primeira vez."
+            },
+            {
+                "termino": "Mas",
+                "explicacion": "Conector adversativo que introduz uma ideia que contrasta ou se opõe ao dito anteriormente.",
+                "ejemplo": "Era um sonho lindo, mas eu já não o queria mais."
+            },
+            {
+                "termino": "Depois de",
+                "explicacion": "Conector temporal que indica posterioridade na sequência de ações.",
+                "ejemplo": "Depois de alguns segundos, uma luz branca encheu o recipiente."
+            },
+            {
+                "termino": "Às vezes",
+                "explicacion": "Conector que expressa frequência ou introduz uma ideia que não é constante, mas ocasional.",
+                "ejemplo": "Às vezes, para avançar, é necessário soltar o que já não nos pertence."
+            }
+        ],
+        "verbos_y_adjetivos": [
+            {
+                "termino": "exibiam",
+                "explicacion": "Verbo no passado (3ª pessoa do plural) que significa mostrar ou apresentar algo ao público.",
+                "ejemplo": "Nas prateleiras de cristal, os vendedores exibiam frascos transparentes."
+            },
+            {
+                "termino": "impecável",
+                "explicacion": "Adjetivo que descreve algo perfeito, sem nenhum defeito ou falha.",
+                "ejemplo": "um homem jovem que vestia um terno cinza impecável"
+            },
+            {
+                "termino": "recorrente",
+                "explicacion": "Adjetivo que descreve algo que se repete ou reaparece com frequência.",
+                "ejemplo": "Elena lembrou-se de um sonho recorrente que tinha desde criança."
+            },
+            {
+                "termino": "soltar",
+                "explicacion": "Verbo no infinitivo que significa deixar ir, liberar ou desprender-se de algo.",
+                "ejemplo": "é necessário soltar o que já não nos pertence."
+            }
+        ],
+        "sustantivos_clave": [
+            {
+                "termino": "beco",
+                "explicacion": "Rua estreita, geralmente entre edifícios.",
+                "ejemplo": "Elena caminhava por um beco estreito."
+            },
+            {
+                "termino": "lembranças",
+                "explicacion": "Memórias, imagens ou impressões do passado que se conservam na mente.",
+                "ejemplo": "Realmente vendem lembranças aqui?"
+            },
+            {
+                "termino": "frasco",
+                "explicacion": "Recipiente, geralmente de vidro, com tampa, usado para guardar coisas.",
+                "ejemplo": "Este frasco azul contém a sensação de ver o mar pela primeira vez."
+            },
+            {
+                "termino": "troca",
+                "explicacion": "Ação de dar uma coisa e receber outra em troca.",
+                "ejemplo": "Mas também aceitamos trocas."
+            },
+            {
+                "termino": "habilidade",
+                "explicacion": "Capacidade ou destreza para fazer algo bem.",
+                "ejemplo": "Este contém a habilidade de falar três idiomas com fluência."
+            }
+        ],
+        "expresiones_idiomaticas": [
+            {
+                "termino": "deixar ir",
+                "explicacion": "Aceitar perder algo ou alguém; desprender-se emocionalmente.",
+                "ejemplo": "Decidiu que era o momento de deixá-lo ir."
+            },
+            {
+                "termino": "abrir espaço",
+                "explicacion": "Criar a oportunidade ou a capacidade para que algo novo aconteça ou entre.",
+                "ejemplo": "abrir espaço para o inesperado."
+            },
+            {
+                "termino": "sentir-se mais leve",
+                "explicacion": "Sentir alívio emocional, como se um peso tivesse sido removido.",
+                "ejemplo": "Elena saiu do mercado sentindo-se mais leve."
+            }
+        ],
+        "funciones_comunicativas": [
+            {
+                "termino": "Descrever lugares e situações",
+                "explicacion": "Utilizar a linguagem para pintar uma imagem detalhada de um cenário ou circunstância.",
+                "ejemplo": "à sua frente abriu-se uma praça iluminada por pequenas luzes flutuantes."
+            },
+            {
+                "termino": "Expressar curiosidade e fazer perguntas",
+                "explicacion": "Usar estruturas interrogativas para obter informações ou mostrar interesse.",
+                "ejemplo": "— Realmente vendem lembranças aqui? / — E o que acontece se alguém quiser recuperar uma lembrança que vendeu?"
+            },
+            {
+                "termino": "Narrar uma sequência de eventos no passado",
+                "explicacion": "Relatar ações e acontecimentos que ocorreram anteriormente, estabelecendo uma ordem temporal.",
+                "ejemplo": "O vendedor pegou um frasco vazio e pediu a Elena que fechasse os olhos... Depois de alguns segundos, uma luz branca encheu o recipiente."
+            }
+        ],
+        "palabras_clave": [
+            "beco",
+            "praça",
+            "mercado",
+            "lembranças",
+            "vendedor",
+            "frascos",
+            "transparentes",
+            "memórias",
+            "esquecer",
+            "triste",
+            "troca",
+            "sonho",
+            "concentrasse",
+            "habilidade",
+            "fluência",
+            "leve",
+            "ilusão",
+            "cansaço",
+            "avançar",
+            "inesperado"
+        ]
+    }
+]

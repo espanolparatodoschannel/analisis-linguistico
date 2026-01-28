@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Lingüístico Bilingüe</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --accent: #ffd700;
+            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: var(--primary-gradient);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(118, 75, 162, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        select {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: white;
+            cursor: pointer;
+            outline: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        select option {
+            background: #764ba2;
+            color: white;
+        }
+
+        select:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-header {
+            background: var(--glass-bg);
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-header:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--accent);
+            border: 1px solid var(--glass-border);
+        }
+
+        .title-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+        }
+
+        .target-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent);
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .accordion-icon {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            padding: 0 1rem;
+        }
+
+        .section-content.open {
+            max-height: 5000px;
+            /* Large enough to fit content */
+            transition: max-height 0.5s ease-in;
+            padding: 1.5rem 1rem;
+        }
+
+        .section-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .term-group {
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .term-es {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .term-target {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .explanation-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .exp-es {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: block;
+        }
+
+        .exp-target {
+            font-size: 0.85rem;
+            color: var(--accent);
+            opacity: 0.8;
+            font-style: italic;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .example-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .ex-es {
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .ex-target {
+            font-size: 0.85rem;
+            font-style: italic;
+            opacity: 0.8;
+            color: var(--accent);
+            display: block;
+        }
+
+        .keywords-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            background: var(--glass-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .keyword-tag {
+            padding: 0.5rem 1.2rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .keyword-tag:hover {
+            background: var(--accent);
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 id="main-title">Análisis Lingüístico</h1>
+        <div class="controls">
+            <span>Objetivo:</span>
+            <select id="language-selector">
+                <option value="en">Inglés (English)</option>
+                <option value="fr">Francés (Français)</option>
+                <option value="de">Alemán (Deutsch)</option>
+                <option value="ru">Ruso (Русский)</option>
+                <option value="jp">Japonés (日本語)</option>
+                <option value="zn">Chino (中文)</option>
+                <option value="pr">Portugués (Português)</option>
+                <option value="ar">Árabe (العربية)</option>
+                <option value="hi">Hindi (हिन्दी)</option>
+            </select>
+        </div>
+    </header>
+
+    <main id="content">
+        <!-- Contenido dinámico aquí -->
+    </main>
+
+    <div class="footer-note">
+        Herramienta de Análisis Lingüístico Bilingüe &copy; 2026
+    </div>
+
+    <script shadow>
+        const data = {
+            "es": [{ "titulo": "Análisis Lingüístico", "conectores_logicos": [{ "termino": "De repente", "explicacion": "Conector temporal que introduce un cambio brusco o inesperado en la acción.", "ejemplo": "De repente, las paredes de concreto desaparecieron." }, { "termino": "Por ejemplo", "explicacion": "Conector que introduce una aclaración o un caso específico para ilustrar una idea general.", "ejemplo": "Por ejemplo, este frasco azul contiene la sensación de ver el mar por primera vez." }, { "termino": "Pero", "explicacion": "Conector adversativo que introduce una idea que contrasta o se opone a lo dicho anteriormente.", "ejemplo": "Era un sueño hermoso, pero ya no lo quería." }, { "termino": "Después de", "explicacion": "Conector temporal que indica posterioridad en la secuencia de acciones.", "ejemplo": "Después de unos segundos, una luz blanca llenó el recipiente." }, { "termino": "A veces", "explicacion": "Conector que expresa frecuencia o introduce una idea que no es constante, sino ocasional.", "ejemplo": "A veces, para avanzar, es necesario soltar lo que ya no nos pertenece." }], "verbos_y_adjetivos": [{ "termino": "exhibían", "explicacion": "Verbo en pasado (3ª persona plural) que significa mostrar o presentar algo al público.", "ejemplo": "En los estantes de cristal, los vendedores exhibían frascos transparentes." }, { "termino": "impecable", "explicacion": "Adjetivo que describe algo perfecto, sin ningún defecto o falta.", "ejemplo": "un hombre joven que vestía un traje gris impecable" }, { "termino": "recurrente", "explicacion": "Adjetivo que describe algo que se repite o vuelve a aparecer con frecuencia.", "ejemplo": "Elena recordó un sueño recurrente que tenía desde niña." }, { "termino": "soltar", "explicacion": "Verbo en infinitivo que significa dejar ir, liberar o desprenderse de algo.", "ejemplo": "es necesario soltar lo que ya no nos pertenece." }], "sustantivos_clave": [{ "termino": "callejón", "explicacion": "Calle estrecha, generalmente entre edificios.", "ejemplo": "Elena caminaba por un callejón estrecho." }, { "termino": "recuerdos", "explicacion": "Memorias, imágenes o impresiones del pasado que se conservan en la mente.", "ejemplo": "¿Realmente venden recuerdos aquí?" }, { "termino": "frasco", "explicacion": "Recipiente, generalmente de vidrio, con tapa, usado para guardar cosas.", "ejemplo": "Este frasco azul contiene la sensación de ver el mar por primera vez." }, { "termino": "intercambio", "explicacion": "Acción de dar una cosa y recibir otra a cambio.", "ejemplo": "Pero también aceptamos intercambios." }, { "termino": "habilidad", "explicacion": "Capacidad o destreza para hacer algo bien.", "ejemplo": "Este contiene la habilidad de hablar tres idiomas con fluidez." }], "expresiones_idiomaticas": [{ "termino": "dejar ir", "explicacion": "Aceptar perder algo o a alguien; desprenderse emocionalmente.", "ejemplo": "Decidió que era el momento de dejarlo ir." }, { "termino": "abrir espacio", "explicacion": "Crear la oportunidad o la capacidad para que algo nuevo suceda o entre.", "ejemplo": "abrir espacio para lo inesperado." }, { "termino": "sentirse más ligera", "explicacion": "Sentir alivio emocional, como si un peso hubiera sido removido.", "ejemplo": "Elena salió del mercado sintiéndose más ligera." }], "funciones_comunicativas": [{ "termino": "Describir lugares y situaciones", "explicacion": "Utilizar el lenguaje para pintar una imagen detallada de un escenario o circunstancia.", "ejemplo": "frente a ella se abrió una plaza iluminada por pequeñas luces flotantes." }, { "termino": "Expresar curiosidad y hacer preguntas", "explicacion": "Usar estructuras interrogativas para obtener información o mostrar interés.", "ejemplo": "—¿Realmente venden recuerdos aquí? / —¿Y qué pasa si alguien quiere recuperar un recuerdo que vendió?" }, { "termino": "Narrar una secuencia de eventos en el pasado", "explicacion": "Relatar acciones y sucesos que ocurrieron con anterioridad, estableciendo un orden temporal.", "ejemplo": "El vendedor tomó un frasco vacío y le pidió a Elena que cerrara los ojos... Después de unos segundos, una luz blanca llenó el recipiente." }], "palabras_clave": ["callejón", "plaza", "mercado", "recuerdos", "vendedor", "frascos", "transparentes", "memorias", "olvidar", "triste", "intercambio", "sueño", "concentrara", "habilidad", "fluidez", "ligera", "ilusión", "cansancio", "avanzar", "inesperado"] }],
+            "en": [{ "titulo": "Linguistic Analysis", "conectores_logicos": [{ "termino": "Suddenly", "explicacion": "Temporal connector that introduces a sudden or unexpected change in the action.", "ejemplo": "Suddenly, the concrete walls disappeared." }, { "termino": "For example", "explicacion": "Connector that introduces a clarification or a specific case to illustrate a general idea.", "ejemplo": "For example, this blue jar contains the feeling of seeing the sea for the first time." }, { "termino": "But", "explicacion": "Adversative connector that introduces an idea that contrasts or opposes what was said before.", "ejemplo": "It was a beautiful dream, but she no longer wanted it." }, { "termino": "After", "explicacion": "Temporal connector that indicates posteriority in the sequence of actions.", "ejemplo": "After a few seconds, a white light filled the container." }, { "termino": "Sometimes", "explicacion": "Connector that expresses frequency or introduces an idea that is not constant, but occasional.", "ejemplo": "Sometimes, to move forward, it is necessary to let go of what no longer belongs to us." }], "verbos_y_adjetivos": [{ "termino": "displayed", "explicacion": "Verb in the past tense (3rd person plural) meaning to show or present something to the public.", "ejemplo": "On the glass shelves, the vendors displayed transparent jars." }, { "termino": "impeccable", "explicacion": "Adjective that describes something perfect, without any defect or flaw.", "ejemplo": "a young man wearing an impeccable gray suit" }, { "termino": "recurrent", "explicacion": "Adjective that describes something that repeats or reappears frequently.", "ejemplo": "Elena remembered a recurrent dream she had had since childhood." }, { "termino": "let go", "explicacion": "Verb in the infinitive meaning to release, free, or detach from something.", "ejemplo": "it is necessary to let go of what no longer belongs to us." }], "sustantivos_clave": [{ "termino": "alley", "explicacion": "Narrow street, usually between buildings.", "ejemplo": "Elena walked down a narrow alley." }, { "termino": "memories", "explicacion": "Memories, images, or impressions of the past preserved in the mind.", "ejemplo": "Do you really sell memories here?" }, { "termino": "jar", "explicacion": "Container, usually made of glass, with a lid, used to store things.", "ejemplo": "This blue jar contains the feeling of seeing the sea for the first time." }, { "termino": "exchange", "explicacion": "The action of giving one thing and receiving another in return.", "ejemplo": "But we also accept exchanges." }, { "termino": "skill", "explicacion": "Ability or proficiency to do something well.", "ejemplo": "This one contains the skill of speaking three languages fluently." }], "expresiones_idiomaticas": [{ "termino": "let go", "explicacion": "To accept losing something or someone; to detach emotionally.", "ejemplo": "She decided it was time to let it go." }, { "termino": "make room", "explicacion": "To create the opportunity or capacity for something new to happen or enter.", "ejemplo": "make room for the unexpected." }, { "termino": "feel lighter", "explicacion": "To feel emotional relief, as if a weight had been lifted.", "ejemplo": "Elena left the market feeling lighter." }], "funciones_comunicativas": [{ "termino": "Describing places and situations", "explicacion": "Using language to paint a detailed picture of a setting or circumstance.", "ejemplo": "in front of her, a plaza opened up, illuminated by small floating lights." }, { "termino": "Expressing curiosity and asking questions", "explicacion": "Using interrogative structures to obtain information or show interest.", "ejemplo": "\"Do you really sell memories here?\" / \"And what happens if someone wants to recover a memory they sold?\"" }, { "termino": "Narrating a sequence of past events", "explicacion": "Relating actions and events that occurred previously, establishing a temporal order.", "ejemplo": "The vendor took an empty jar and asked Elena to close her eyes... After a few seconds, a white light filled the container." }], "palabras_clave": ["alley", "plaza", "market", "memories", "vendor", "jars", "transparent", "memories", "forget", "sad", "exchange", "dream", "concentrated", "skill", "fluency", "light", "illusion", "tiredness", "advance", "unexpected"] }],
+            "fr": [{ "titulo": "Analyse Linguistique", "conectores_logicos": [{ "termino": "Soudain", "explicacion": "Connecteur temporel qui introduit un changement brusque ou inattendu dans l'action.", "ejemplo": "Soudain, les murs de béton disparurent." }, { "termino": "Par exemple", "explicacion": "Connecteur qui introduit une clarification ou un cas spécifique pour illustrer une idée générale.", "ejemplo": "Par exemple, ce flacon bleu contient la sensation de voir la mer pour la première fois." }, { "termino": "Mais", "explicacion": "Connecteur adversatif qui introduit une idée qui contraste ou s'oppose à ce qui a été dit précédemment.", "ejemplo": "C'était un beau rêve, mais je n'en voulais plus." }, { "termino": "Après", "explicacion": "Connecteur temporel qui indique une postériorité dans la séquence d'actions.", "ejemplo": "Après quelques secondes, une lumière blanche remplit le récipient." }, { "termino": "Parfois", "explicacion": "Connecteur qui exprime la fréquence ou introduit une idée qui n'est pas constante, mais occasionnelle.", "ejemplo": "Parfois, pour avancer, il est nécessaire de lâcher ce qui ne nous appartient plus." }], "verbos_y_adjetivos": [{ "termino": "exposaient", "explicacion": "Verbe au passé (3ème personne du pluriel) qui signifie montrer ou présenter quelque chose au public.", "ejemplo": "Sur les étagères en verre, les vendeurs exposaient des flacons transparents." }, { "termino": "impeccable", "explicacion": "Adjectif qui décrit quelque chose de parfait, sans aucun défaut ou faute.", "ejemplo": "un jeune homme qui portait un costume gris impeccable" }, { "termino": "récurrent", "explicacion": "Adjectif qui décrit quelque chose qui se répète ou réapparaît fréquemment.", "ejemplo": "Elena se souvint d'un rêve récurrent qu'elle faisait depuis son enfance." }, { "termino": "lâcher", "explicacion": "Verbe à l'infinitif qui signifie laisser aller, libérer ou se détacher de quelque chose.", "ejemplo": "il est nécessaire de lâcher ce qui ne nous appartient plus." }], "sustantivos_clave": [{ "termino": "ruelle", "explicacion": "Rue étroite, généralement entre des bâtiments.", "ejemplo": "Elena marchait dans une ruelle étroite." }, { "termino": "souvenirs", "explicacion": "Mémoires, images ou impressions du passé conservées dans l'esprit.", "ejemplo": "Vendent-ils vraiment des souvenirs ici ?" }, { "termino": "flacon", "explicacion": "Récipient, généralement en verre, avec un couvercle, utilisé pour conserver des choses.", "ejemplo": "Ce flacon bleu contient la sensation de voir la mer pour la première fois." }, { "termino": "échange", "explicacion": "Action de donner une chose et d'en recevoir une autre en retour.", "ejemplo": "Mais nous acceptons aussi les échanges." }, { "termino": "compétence", "explicacion": "Capacité ou habileté à bien faire quelque chose.", "ejemplo": "Celui-ci contient la compétence de parler couramment trois langues." }], "expresiones_idiomaticas": [{ "termino": "laisser aller", "explicacion": "Accepter de perdre quelque chose ou quelqu'un ; se détacher émotionnellement.", "ejemplo": "Elle décida qu'il était temps de le laisser aller." }, { "termino": "faire de la place", "explicacion": "Créer l'opportunité ou la capacité pour que quelque chose de nouveau arrive ou entre.", "ejemplo": "faire de la place pour l'inattendu." }, { "termino": "se sentir plus légère", "explicacion": "Ressentir un soulagement émotionnel, comme si un poids avait été enlevé.", "ejemplo": "Elena sortit du marché en se sentant plus légère." }], "funciones_comunicativas": [{ "termino": "Décrire des lieux et des situations", "explicacion": "Utiliser le langage pour peindre une image détaillée d'un scénario ou d'une circonstance.", "ejemplo": "devant elle s'ouvrit une place illuminée par de petites lumières flottantes." }, { "termino": "Exprimer de la curiosité et poser des questions", "explicacion": "Utiliser des structures interrogatives pour obtenir des informations ou montrer de l'intérêt.", "ejemplo": "— Vendent-ils vraiment des souvenirs ici ? / — Et que se passe-t-il si quelqu'un veut récupérer un souvenir qu'il a vendu ?" }, { "termino": "Raconter une séquence d'événements dans le passé", "explicacion": "Raconter des actions et des événements survenus antérieurement, en établissant un ordre temporel.", "ejemplo": "Le vendeur prit un flacon vide et demanda à Elena de fermer les yeux... Après quelques secondes, une lumière blanche remplit le récipient." }], "palabras_clave": ["ruelle", "place", "marché", "souvenirs", "vendeur", "flacons", "transparents", "mémoires", "oublier", "triste", "échange", "rêve", "se concentrer", "compétence", "aisance", "légère", "illusion", "fatigue", "avancer", "inattendu"] }],
+            "de": [{ "titulo": "Sprachanalyse", "conectores_logicos": [{ "termino": "Plötzlich", "explicacion": "Zeitliche Konjunktion, die eine plötzliche oder unerwartete Wendung in der Handlung einleitet.", "ejemplo": "Plötzlich verschwanden die Betonwände." }, { "termino": "Zum Beispiel", "explicacion": "Konjunktion, die eine Erklärung oder einen spezifischen Fall zur Veranschaulichung einer allgemeinen Idee einleitet.", "ejemplo": "Zum Beispiel enthält dieses blaue Glas das Gefühl, zum ersten Mal das Meer zu sehen." }, { "termino": "Aber", "explicacion": "Adversative Konjunktion, die einen Gedanken einleitet, der einem vorher Gesagten widerspricht oder kontrastiert.", "ejemplo": "Es war ein schöner Traum, aber ich wollte ihn nicht mehr." }, { "termino": "Nach", "explicacion": "Zeitliche Konjunktion, die Nachzeitigkeit in einer Handlungsabfolge anzeigt.", "ejemplo": "Nach ein paar Sekunden füllte ein weißes Licht den Behälter." }, { "termino": "Manchmal", "explicacion": "Konjunktion, die Häufigkeit ausdrückt oder einen Gedanken einleitet, der nicht konstant, sondern gelegentlich ist.", "ejemplo": "Manchmal muss man, um voranzukommen, das loslassen, was uns nicht mehr gehört." }], "verbos_y_adjetivos": [{ "termino": "präsentierten", "explicacion": "Verb in der Vergangenheit (3. Person Plural), das bedeutet, etwas der Öffentlichkeit zu zeigen oder vorzustellen.", "ejemplo": "In den Glasregalen präsentierten die Verkäufer durchsichtige Gläser." }, { "termino": "makellos", "explicacion": "Adjektiv, das etwas Perfektes, ohne jeden Fehler oder Mangel beschreibt.", "ejemplo": "ein junger Mann, der einen makellosen grauen Anzug trug" }, { "termino": "wiederkehrend", "explicacion": "Adjektiv, das etwas beschreibt, das sich wiederholt oder häufig wieder auftaucht.", "ejemplo": "Elena erinnerte sich an einen wiederkehrenden Traum, den sie seit ihrer Kindheit hatte." }, { "termino": "loslassen", "explicacion": "Verb im Infinitiv, das bedeutet, gehen zu lassen, zu befreien oder sich von etwas zu lösen.", "ejemplo": "muss man das loslassen, what uns nicht mehr gehört." }], "sustantivos_clave": [{ "termino": "Gasse", "explicacion": "Schmale Straße, meist zwischen Gebäuden.", "ejemplo": "Elena ging eine enge Gasse entlang." }, { "termino": "Erinnerungen", "explicacion": "Erinnerungen, Bilder oder Eindrücke aus der Vergangenheit, die im Gedächtnis bewahrt werden.", "ejemplo": "Verkaufen Sie hier wirklich Erinnerungen?" }, { "termino": "Glas", "explicacion": "Behälter, meist aus Glas, mit Deckel, zum Aufbewahren von Dingen.", "ejemplo": "Dieses blaue Glas enthält das Gefühl, zum ersten Mal das Meer zu sehen." }, { "termino": "Tausch", "explicacion": "Handlung, bei der man eine Sache gibt und eine andere dafür erhält.", "ejemplo": "Aber wir akzeptieren auch Tauschgeschäfte." }, { "termino": "Fähigkeit", "explicacion": "Kapazität oder Geschicklichkeit, etwas gut zu machen.", "ejemplo": "Dieses enthält die Fähigkeit, drei Sprachen fließend zu sprechen." }], "expresiones_idiomaticas": [{ "termino": "loslassen", "explicacion": "Akzeptieren, etwas oder jemanden zu verlieren; sich emotional lösen.", "ejemplo": "Sie entschied, dass es Zeit war, es loszulassen." }, { "termino": "Platz schaffen", "explicacion": "Die Gelegenheit oder Fähigkeit schaffen, dass etwas Neues geschieht oder eintritt.", "ejemplo": "Platz für das Unerwartete schaffen." }, { "termino": "sich leichter fühlen", "explicacion": "Emotionale Erleichterung spüren, als wäre eine Last entfernt worden.", "ejemplo": "Elena verließ den Markt und fühlte sich leichter." }], "funciones_comunicativas": [{ "termino": "Orte und Situationen beschreiben", "explicacion": "Die Sprache nutzen, um ein detailliertes Bild einer Szenerie oder Umstände zu zeichnen.", "ejemplo": "vor ihr öffnete sich ein Platz, beleuchtet von kleinen schwebenden Lichtern." }, { "termino": "Neugier ausdrücken und Fragen stellen", "explicacion": "Fragestrukturen verwenden, um Informationen zu erhalten oder Interesse zu zeigen.", "ejemplo": "\"Verkaufen Sie hier wirklich Erinnerungen?\" / \"Und was passiert, wenn jemand eine verkaufte Erinnerung zurückhaben möchte?\"" }, { "termino": "Eine Abfolge von Ereignissen in der Vergangenheit erzählen", "explicacion": "Handlungen und Geschehnisse berichten, die früher stattfanden, und eine zeitliche Ordnung herstellen.", "ejemplo": "Der Verkäufer nahm ein leeres Glas und bat Elena, die Augen zu schließen... Nach ein paar Sekunden füllte ein weißes Licht den Behälter." }], "palabras_clave": ["Gasse", "Platz", "Markt", "Erinnerungen", "Verkäufer", "Gläser", "durchsichtig", "Erinnerungen", "vergessen", "traurig", "Tausch", "Traum", "konzentrierte", "Fähigkeit", "Flüssigkeit", "leicht", "Illusion", "Müdigkeit", "vorankommen", "unerwartet"] }],
+            "ru": [{ "titulo": "Лингвистический анализ", "conectores_logicos": [{ "termino": "Вдруг", "explicacion": "Временной союз, вводящий резкое или неожиданное изменение в действии.", "ejemplo": "Вдруг бетонные стены исчезли." }, { "termino": "Например", "explicacion": "Союз, вводящий пояснение или конкретный случай для иллюстрации общей идеи.", "ejemplo": "Например, в этой синей банке содержится ощущение от первого взгляда на море." }, { "termino": "Но", "explicacion": "Противительный союз, вводящий идею, которая контрастирует или противопоставляется ранее сказанному.", "ejemplo": "Это был красивый сон, но я больше не хотел его." }, { "termino": "После", "explicacion": "Временной союз, указывающий на последующее действие в последовательности событий.", "ejemplo": "Через несколько секунд белый свет наполнил сосуд." }, { "termino": "Иногда", "explicacion": "Союз, выражающий частотность или вводящий идею, которая не является постоянной, а случается время от времени.", "ejemplo": "Иногда, чтобы двигаться вперед, нужно отпустить то, что нам больше не принадлежит." }], "verbos_y_adjetivos": [{ "termino": "выставляли", "explicacion": "Глагол в прошедшем времени (3-е лицо, множественное число), означающий показывать или представлять что-либо публике.", "ejemplo": "На стеклянных полках продавцы выставляли прозрачные банки." }, { "termino": "безупречный", "explicacion": "Прилагательное, описывающее что-либо идеальное, без каких-либо дефектов или недостатков.", "ejemplo": "молодой человек в безупречном сером костюме" }, { "termino": "повторяющийся", "explicacion": "Прилагательное, описывающее что-либо, что повторяется или появляется снова часто.", "ejemplo": "Елена вспомнила повторяющийся сон, который видела с детства." }, { "termino": "отпустить", "explicacion": "Глагол в инфинитиве, означающий позволить уйти, освободить или отрешиться от чего-либо.", "ejemplo": "необходимо отпустить то, что нам больше не принадлежит." }], "sustantivos_clave": [{ "termino": "переулок", "explicacion": "Узкая улица, обычно между зданиями.", "ejemplo": "Елена шла по узкому переулку." }, { "termino": "воспоминания", "explicacion": "Память, образы или впечатления из прошлого, сохраняющиеся в сознании.", "ejemplo": "Вы действительно продаете воспоминания здесь?" }, { "termino": "банка", "explicacion": "Сосуд, обычно стеклянный, с крышкой, используемый для хранения вещей.", "ejemplo": "В этой синей банке содержится ощущение от первого взгляда на море." }, { "termino": "обмен", "explicacion": "Действие по отдаче одной вещи и получению другой взамен.", "ejemplo": "Но мы также принимаем обмен." }, { "termino": "способность", "explicacion": "Умение или навык хорошо делать что-либо.", "ejemplo": "В этой содержится способность свободно говорить на трех языках." }], "expresiones_idiomaticas": [{ "termino": "отпустить", "explicacion": "Смириться с потерей чего-либо или кого-либо; эмоционально отрешиться.", "ejemplo": "Она решила, что пришло время отпустить это." }, { "termino": "освободить место", "explicacion": "Создать возможность или способность для того, чтобы что-то новое произошло или вошло.", "ejemplo": "освободить место для неожиданного." }, { "termino": "почувствовать себя легче", "explicacion": "Испытать эмоциональное облегчение, как будто груз был снят.", "ejemplo": "Елена вышла с рынка, почувствовав себя легче." }], "funciones_comunicativas": [{ "termino": "Описание мест и ситуаций", "explicacion": "Использование языка для создания детального образа сцены или обстоятельств.", "ejemplo": "перед ней открылась площадь, освещенная маленькими парящими огоньками." }, { "termino": "Выражение любопытства и задавание вопросов", "explicacion": "Использование вопросительных конструкций для получения информации или проявления интереса.", "ejemplo": "—Вы действительно продаете воспоминания здесь? / —А что, если кто-то захочет вернуть проданное воспоминание?" }, { "termino": "Повествование о последовательности событий в прошлом", "explicacion": "Рассказ о действиях и событиях, произошедших ранее, с установлением временного порядка.", "ejemplo": "Продавец взял пустую банку и попросил Елену закрыть глаза... Через несколько секунд белый свет наполнил сосуд." }], "palabras_clave": ["переулок", "площадь", "рынок", "воспоминания", "продавец", "банки", "прозрачные", "память", "забывать", "грустный", "обмен", "сон", "сосредоточиться", "способность", "свободно", "легкий", "иллюзия", "усталость", "продвигаться вперед", "неожиданный"] }],
+            "jp": [{ "titulo": "言語分析", "conectores_logicos": [{ "termino": "突然", "explicacion": "行動における急激または予期せぬ変化を導入する時間的接続詞。", "ejemplo": "突然、コンクリートの壁が消えた。" }, { "termino": "例えば", "explicacion": "一般的な考えを説明するための具体的な例や事例を導入する接続詞。", "ejemplo": "例えば、この青い瓶には、初めて海を見たときの感覚が入っています。" }, { "termino": "しかし", "explicacion": "前述の内容と対照的または反対の考えを導入する逆接の接続詞。", "ejemplo": "それは美しい夢だったが、もう欲しくはなかった。" }, { "termino": "後に", "explicacion": "一連の行動における後続性を示す時間的接続詞。", "ejemplo": "数秒後、白い光が容器を満たした。" }, { "termino": "時々", "explicacion": "頻度を表す、または一定ではなく時折起こる考えを導入する接続詞。", "ejemplo": "時々、前に進むためには、もう自分に属さないものを手放す必要がある。" }], "verbos_y_adjetivos": [{ "termino": "展示していた", "explicacion": "何かを公衆に見せる、または提示することを意味する過去形の動詞（三人称複数）。", "ejemplo": "ガラスの棚で、売り手たちは透明な瓶を展示していた。" }, { "termino": "完璧な", "explicacion": "欠陥や欠点が一切ない、完璧なものを描写する形容詞。", "ejemplo": "完璧なグレーのスーツを着た若い男性" }, { "termino": "繰り返し起こる", "explicacion": "頻繁に繰り返される、または再び現れるものを描写する形容詞。", "ejemplo": "エレナは子供の頃から見ていた繰り返し起こる夢を思い出した。" }, { "termino": "手放す", "explicacion": "離す、解放する、または何かから離れることを意味する不定詞の動詞。", "ejemplo": "もう自分に属さないものを手放す必要がある。" }], "sustantivos_clave": [{ "termino": "路地", "explicacion": "通常、建物の間にある狭い通り。", "ejemplo": "エレナは狭い路地を歩いていた。" }, { "termino": "思い出", "explicacion": "心の中に保存されている過去の記憶、イメージ、または印象。", "ejemplo": "ここでは本当に思い出を売っているのですか？" }, { "termino": "瓶", "explicacion": "通常は蓋付きのガラス製の容器で、物を保管するために使用される。", "ejemplo": "この青い瓶には、初めて海を見たときの感覚が入っています。" }, { "termino": "交換", "explicacion": "ある物を与え、代わりに別の物を受け取る行為。", "ejemplo": "しかし、交換も受け付けています。" }, { "termino": "能力", "explicacion": "何かを上手く行うための能力または技能。", "ejemplo": "これには、三か国語を流暢に話す能力が入っています。" }], "expresiones_idiomaticas": [{ "termino": "手放す", "explicacion": "何かまたは誰かを失うことを受け入れること；感情的に離れること。", "ejemplo": "彼女はそれを手放す時が来たと決心した。" }, { "termino": "余地を作る", "explicacion": "何か新しいことが起こる、または入るための機会や能力を作り出すこと。", "ejemplo": "予期せぬことへの余地を作る。" }, { "termino": "より軽く感じる", "explicacion": "重荷が取り除かれたかのような、感情的な安堵を感じること。", "ejemplo": "エレナは市場を出て、より軽く感じた。" }], "funciones_comunicativas": [{ "termino": "場所や状況を描写する", "explicacion": "シナリオや状況の詳細な絵を描くために言語を使用すること。", "ejemplo": "彼女の前に、小さな浮遊する光で照らされた広場が開けた。" }, { "termino": "好奇心を表現し質問する", "explicacion": "情報を得る、または関心を示すために疑問文の構造を使用すること。", "ejemplo": "—ここでは本当に思い出を売っているのですか？ / —そして、もし誰かが売った思い出を取り戻したいとしたらどうなりますか？" }, { "termino": "過去の一連の出来事を語る", "explicacion": "時間的順序を確立しながら、以前に起こった行動や出来事を語ること。", "ejemplo": "売り手は空の瓶を取り、エレナに目を閉じるよう頼んだ…数秒後、白い光が容器を満たした。" }], "palabras_clave": ["路地", "広場", "市場", "思い出", "売り手", "瓶", "透明な", "記憶", "忘れる", "悲しい", "交換", "夢", "集中する", "能力", "流暢さ", "軽い", "幻想", "疲労", "前進する", "予期せぬ"] }],
+            "zn": [{ "titulo": "语言分析", "conectores_logicos": [{ "termino": "突然", "explicacion": "时间连接词，用于引出动作中突然或意外的变化。", "ejemplo": "突然，混凝土墙壁消失了。" }, { "termino": "例如", "explicacion": "连接词，用于引出说明或具体案例，以阐释一个总体观点。", "ejemplo": "例如，这个蓝色罐子里装着第一次看到大海的感觉。" }, { "termino": "但是", "explicacion": "转折连接词，用于引出与前述内容形成对比或对立的想法。", "ejemplo": "那是一个美丽的梦，但我不再想要它了。" }, { "termino": "在...之后", "explicacion": "时间连接词，表示动作序列中的后发生性。", "ejemplo": "几秒钟后，一道白光充满了容器。" }, { "termino": "有时", "explicacion": "连接词，表示频率或引出非恒定、偶尔发生的想法。", "ejemplo": "有时，为了前进，必须放下那些不再属于我们的东西。" }], "verbos_y_adjetivos": [{ "termino": "陈列", "explicacion": "动词过去时（第三人称复数），意为向公众展示或呈现某物。", "ejemplo": "在玻璃货架上，商贩们陈列着透明的罐子。" }, { "termino": "完美无瑕", "explicacion": "形容词，描述某物完美，没有任何缺陷或瑕疵。", "ejemplo": "一位穿着完美无瑕的灰色西装的年轻男子" }, { "termino": "反复出现的", "explicacion": "形容词，描述某物频繁重复或再次出现。", "ejemplo": "埃琳娜想起了她从小就有的一个反复出现的梦。" }, { "termino": "放下", "explicacion": "动词不定式，意为放开、释放或摆脱某物。", "ejemplo": "必须放下那些不再属于我们的东西。" }], "sustantivos_clave": [{ "termino": "小巷", "explicacion": "狭窄的街道，通常位于建筑物之间。", "ejemplo": "埃琳娜走在一条狭窄的小巷里平衡。" }, { "termino": "回忆", "explicacion": "记忆中保存的关于过去的记忆、图像或印象。", "ejemplo": "这里真的出售回忆吗？" }, { "termino": "罐子", "explicacion": "容器，通常为玻璃制，带盖子，用于存放物品。", "ejemplo": "这个蓝色罐子里装着第一次看到大海的感觉。" }, { "termino": "交换", "explicacion": "以一物换取另一物的行为。", "ejemplo": "但我们也接受交换。" }, { "termino": "能力", "explicacion": "做好某事的才能或技能。", "ejemplo": "这里面装着流利说三种语言的能力。" }], "expresiones_idiomaticas": [{ "termino": "放手", "explicacion": "接受失去某物或某人；情感上释怀。", "ejemplo": "她决定是时候放手了。" }, { "termino": "腾出空间", "explicacion": "为新的、意外的事物发生或进入创造机会或可能性。", "ejemplo": "为意外之事腾出空间。" }, { "termino": "感到轻松", "explicacion": "感到情感上的解脱，仿佛卸下了一个重担。", "ejemplo": "埃琳娜走出市场，感到轻松了许多。" }], "funciones_comunicativas": [{ "termino": "描述地点和情境", "explicacion": "运用语言细致地描绘一个场景或状况的画面。", "ejemplo": "在她面前，一个被漂浮的小灯照亮的广场展现在眼前。" }, { "termino": "表达好奇并提出问题", "explicacion": "使用疑问结构来获取信息或表示兴趣。", "ejemplo": "——这里真的出售回忆吗？ / ——如果有人想拿回自己卖掉的回忆，会怎么样？" }, { "termino": "叙述过去的事件序列", "explicacion": "讲述先前发生的动作和事件，建立时间顺序。", "ejemplo": "商贩拿起一个空罐子，让埃琳娜闭上眼睛……几秒钟后，一道白光充满了容器。" }], "palabras_clave": ["小巷", "广场", "市场", "回忆", "商贩", "罐子", "透明的", "记忆", "忘记", "悲伤的", "交换", "梦", "集中", "能力", "流利", "轻松的", "幻觉", "疲惫", "前进", "意外的"] }],
+            "pr": [{ "titulo": "Análise Linguística", "conectores_logicos": [{ "termino": "De repente", "explicacion": "Conector temporal que introduz uma mudança brusca ou inesperada na ação.", "ejemplo": "De repente, as paredes de concreto desapareceram." }, { "termino": "Por exemplo", "explicacion": "Conector que introduz um esclarecimento ou um caso específico para ilustrar uma ideia geral.", "ejemplo": "Por exemplo, este frasco azul contém a sensação de ver o mar pela primeira vez." }, { "termino": "Mas", "explicacion": "Conector adversativo que introduz uma ideia que contrasta ou se opõe ao dito anteriormente.", "ejemplo": "Era um sonho lindo, mas eu já não o queria mais." }, { "termino": "Depois de", "explicacion": "Conector temporal que indica posterioridade na sequência de ações.", "ejemplo": "Depois de alguns segundos, uma luz branca encheu o recipiente." }, { "termino": "Às vezes", "explicacion": "Conector que expressa frequência ou introduz uma ideia que não é constante, mas ocasional.", "ejemplo": "Às vezes, para avançar, é necessário soltar o que já não nos pertence." }], "verbos_y_adjetivos": [{ "termino": "exibiam", "explicacion": "Verbo no passado (3ª pessoa do plural) que significa mostrar ou apresentar algo ao público.", "ejemplo": "Nas prateleiras de cristal, os vendedores exibiam frascos transparentes." }, { "termino": "impecável", "explicacion": "Adjetivo que descreve algo perfeito, sem nenhum defeito ou falha.", "ejemplo": "um homem jovem que vestia um terno cinza impecável" }, { "termino": "recorrente", "explicacion": "Adjetivo que descreve algo que se repete ou reaparece com frequência.", "ejemplo": "Elena lembrou-se de um sonho recorrente que tinha desde criança." }, { "termino": "soltar", "explicacion": "Verbo no infinitivo que significa deixar ir, liberar ou desprender-se de algo.", "ejemplo": "é necessário soltar o que já não nos pertence." }], "sustantivos_clave": [{ "termino": "beco", "explicacion": "Rua estreita, geralmente entre edifícios.", "ejemplo": "Elena caminhava por um beco estreito." }, { "termino": "lembranças", "explicacion": "Memórias, imagens ou impressões do pasado que se conservam na mente.", "ejemplo": "Realmente vendem lembranças aqui?" }, { "termino": "frasco", "explicacion": "Recipiente, geralmente de vidro, com tampa, usado para guardar coisas.", "ejemplo": "Este frasco azul contém a sensação de ver o mar pela primeira vez." }, { "termino": "troca", "explicacion": "Ação de dar uma coisa e receber outra em troca.", "ejemplo": "Mas também aceitamos trocas." }, { "termino": "habilidade", "explicacion": "Capacidade ou destreza para fazer algo bem.", "ejemplo": "Este contém a habilidade de falar três idiomas com fluência." }], "expresiones_idiomaticas": [{ "termino": "deixar ir", "explicacion": "Aceitar perder algo ou alguém; desprender-se emocionalmente.", "ejemplo": "Decidiu que era o momento de deixá-lo ir." }, { "termino": "abrir espaço", "explicacion": "Criar a oportunidade ou a capacidade para que algo novo aconteça ou entre.", "ejemplo": "abrir espaço para o inesperado." }, { "termino": "sentir-se mais leve", "explicacion": "Sentir alívio emocional, como se um peso tivesse sido removido.", "ejemplo": "Elena saiu do mercado sentindo-se mais leve." }], "funciones_comunicativas": [{ "termino": "Descrever lugares e situações", "explicacion": "Utilizar a linguagem para pintar uma imagem detalhada de um cenário ou circunstância.", "ejemplo": "à sua frente abriu-se uma praça iluminada por pequenas luzes flutuantes." }, { "termino": "Expressar curiosidade e fazer perguntas", "explicacion": "Usar estruturas interrogativas para obter informações ou mostrar interesse.", "ejemplo": "— Realmente vendem lembranças aqui? / — E o que acontece se alguém quiser recuperar uma lembrança que vendeu?" }, { "termino": "Narrar uma sequência de eventos no passado", "explicacion": "Relatar ações e acontecimentos que ocorreram anteriormente, estabelecendo uma ordem temporal.", "ejemplo": "O vendedor pegou um frasco vazio e pediu a Elena que fechasse os olhos... Depois de alguns segundos, uma luz branca encheu o recipiente." }], "palabras_clave": ["beco", "praça", "mercado", "lembranças", "vendedor", "frascos", "transparentes", "memórias", "esquecer", "triste", "troca", "sonho", "concentrasse", "habilidade", "fluência", "leve", "ilusão", "cansaço", "avançar", "inesperado"] }],
+            "ar": [{ "titulo": "التحليل اللغوي", "conectores_logicos": [{ "termino": "فجأة", "explicacion": "أداة ربط زمنية تُدخل تغييراً مفاجئاً أو غير متوقع في الحدث.", "ejemplo": "فجأة، اختفت جدران الخرسانة." }, { "termino": "على سبيل المثال", "explicacion": "أداة ربط تقدم توضيحاً أو حالة محددة لتوضيح فكرة عامة.", "ejemplo": "على سبيل المثال، يحتوي هذا البرطمان الأزرق على إحساس رؤية البحر للمرة الأولى." }, { "termino": "لكن", "explicacion": "أداة ربط تعارضية تقدم فكرة تتناقض أو تعارض ما قيل سابقاً.", "ejemplo": "كان حلماً جميلاً، لكنني لم أعد أرغب فيه." }, { "termino": "بعد", "explicacion": "أداة ربط زمنية تشير إلى تتابع زمني لاحق في سلسلة الأحداث.", "ejemplo": "بعد بضع ثوانٍ، ملأ ضوء أبيض الوعاء." }, { "termino": "أحياناً", "explicacion": "أداة ربط تعبر عن التكرار أو تقدم فكرة ليست ثابتة، بل عَرَضية.", "ejemplo": "أحياناً، للتقدم، من الضروري التخلي عما لم يعد ينتمي إلينا." }], "verbos_y_adjetivos": [{ "termino": "يَعْرِضون", "explicacion": "فعل في الماضي (الغائب الجمع) يعني عرض أو تقديم شيء للجمهور.", "ejemplo": "على الرفوف الزجاجية، كان البائعون يَعْرِضون برطمانات شفافة." }, { "termino": "بِدُون شائبة", "explicacion": "صفة تصف شيئاً مثالياً، بدون أي عيب أو نقص.", "ejemplo": "رجل شاب يرتدي بدلة رمادية بِدُون شائبة" }, { "termino": "مُتكرر", "explicacion": "صفة تصف شيئاً يتكرر أو يعود للظهور بشكل متكرر.", "ejemplo": "تذكرت إيلينا حلماً مُتكرراً كانت تراه منذ طفولتها." }, { "termino": "تَرْك", "explicacion": "فعل في المصدر يعني ترك الذهاب، تحرير أو التخلي عن شيء.", "ejemplo": "من الضروري تَرْك ما لم يعد ينتمي إلينا." }], "sustantivos_clave": [{ "termino": "زُقاق", "explicacion": "شارع ضيق، عادة بين المباني.", "ejemplo": "كانت إيلينا تمشي في زُقاق ضيق." }, { "termino": "ذكريات", "explicacion": "ذكريات، صور أو انطباعات من الماضي محفوظة في العقل.", "ejemplo": "هل يبيعون ذكريات هنا حقاً؟" }, { "termino": "بُرْطُمان", "explicacion": "وعاء، عادة من الزجاج، بغطاء، يُستخدم لحفظ الأشياء.", "ejemplo": "يحتوي هذا البُرْطُمان الأزرق على إحساس رؤية البحر للمرة الأولى." }, { "termino": "مُقايضة", "explicacion": "فعل إعطاء شيء واستلام شيء آخر مقابله.", "ejemplo": "لكننا نقبل أيضاً المُقايضة." }, { "termino": "مَهارة", "explicacion": "قدرة أو براعة في فعل شيء بشكل جيد.", "ejemplo": "هذا يحتوي على مَهارة التحدث بثلاث لغات بطلاقة." }], "expresiones_idiomaticas": [{ "termino": "التخلي عنه / ترك الأمر", "explicacion": "تقبل فقدان شيء أو شخص ما؛ التحرر عاطفياً.", "ejemplo": "قررت أن الوقت قد حان للتخلي عنه." }, { "termino": "فتح المجال", "explicacion": "خلق الفرصة أو القدرة لحدوث شيء جديد أو دخوله.", "ejemplo": "فتح المجال لما هو غير متوقع." }, { "termino": "الشعور بخفة", "explicacion": "الشعور بالراحة العاطفية، كما لو أن وزناً قد أُزيل.", "ejemplo": "خرجت إيلينا من السوق وهي تشعر بخفة." }], "funciones_comunicativas": [{ "termino": "وصف الأماكن والمواقف", "explicacion": "استخدام اللغة لرسم صورة مفصلة لمشهد أو ظرف.", "ejemplo": "أمامها انفتحت ساحة مضاءة بمصابيح صغيرة طافية." }, { "termino": "التعبير عن الفضول وطرح الأسئلة", "explicacion": "استخدام التراكيب الاستفهامية للحصول على معلومات أو إظهار الاهتمام.", "ejemplo": "— هل يبيعون ذكريات هنا حقاً؟ / — وماذا يحدث إذا أراد أحد استعادة ذكرى باعها؟" }, { "termino": "سرد تسلسل الأحداث في الماضي", "explicacion": "رواية الأفعال والأحداث التي وقعت سابقاً، مع ترتيب زمني.", "ejemplo": "أخذ البائع برطماناً فارغاً وطلب من إيلينا أن تغمض عينيها... بعد بضع ثوانٍ، ملأ ضوء أبيض الوعاء." }], "palabras_clave": ["زُقاق", "ساحة", "سوق", "ذكريات", "بائع", "برطمانات", "شفافة", "ذكريات", "نسيان", "حزين", "مقايضة", "حلم", "يركز", "مهارة", "طلاقة", "خفة", "وهم", "تعب", "تقدم", "غير متوقع"] }],
+            "hi": [{ "titulo": "भाषाई विश्लेषण", "conectores_logicos": [{ "termino": "अचानक", "explicacion": "एक अस्थायी संयोजक जो क्रिया में अचानक या अप्रत्याशित परिवर्तन लाता है।", "ejemplo": "अचानक, कंक्रीट की दीवारें गायब हो गईं।" }, { "termino": "उदाहरण के लिए", "explicacion": "एक संयोजक जो किसी सामान्य विचार को स्पष्ट करने या उदाहरण देने के लिए एक विशिष्ट मामला प्रस्तुत करता है।", "ejemplo": "उदाहरण के लिए, इस नीले शीशी में पहली बार समुद्र देखने की अनुभूति है।" }, { "termino": "लेकिन", "explicacion": "एक विरोधाभासी संयोजक जो पहले कही गई बात के विपरीत या उसका विरोध करने वाला विचार प्रस्तुत करता है।", "ejemplo": "यह एक सुंदर सपना था, लेकिन अब मैं इसे नहीं चाहती थी।" }, { "termino": "के बाद", "explicacion": "एक अस्थायी संयोजक जो क्रियाओं के क्रम में बाद के समय को दर्शाता है।", "ejemplo": "कुछ सेकंड के बाद, एक सफेद रोशनी ने पात्र को भर दिया।" }, { "termino": "कभी-कभी", "explicacion": "एक संयोजक जो आवृत्ति व्यक्त करता है या एक ऐसे विचार को प्रस्तुत करता है जो स्थिर नहीं, बल्कि कभी-कभार होता है।", "ejemplo": "कभी-कभी, आगे बढ़ने के लिए, जो अब हमारा नहीं है उसे छोड़ देना ज़रूरी होता है।" }], "verbos_y_adjetivos": [{ "termino": "प्रदर्शित कर रहे थे", "explicacion": "भूतकालीन क्रिया (तीसरा व्यक्ति बहुवचन) जिसका अर्थ है जनता के सामने कुछ दिखाना या प्रस्तुत करना।", "ejemplo": "क्रिस्टल की अलमारियों पर, विक्रेता पारदर्शी शीशियाँ प्रदर्शित कर रहे थे।" }, { "termino": "निर्दोष", "explicacion": "विशेषण जो किसी चीज़ को पूर्ण, बिना किसी दोष या कमी के वर्णित करता है।", "ejemplo": "एक युवा व्यक्ति जिसने एक निर्दोष ग्रे सूट पहना हुआ था" }, { "termino": "आवर्ती", "explicacion": "विशेषण जो किसी ऐसी चीज़ का वर्णन करता है जो बार-बार दोहराई जाती है या प्रकट होती है।", "ejemplo": "ऐलेना को एक आवर्ती सपना याद आया जो उसे बचपन से आता था।" }, { "termino": "छोड़ देना", "explicacion": "अनंत काल की क्रिया जिसका अर्थ है जाने देना, मुक्त करना या किसी चीज़ से अलग हो जाना।", "ejemplo": "जो अब हमारा नहीं है उसे छोड़ देना ज़रूरी है।" }], "sustantivos_clave": [{ "termino": "गली", "explicacion": "संकरी सड़क, आमतौर पर इमारतों के बीच।", "ejemplo": "ऐलेना एक संकरी गली से चल रही थी।" }, { "termino": "यादें", "explicacion": "अतीत की स्मृतियाँ, छवियाँ या प्रभाव जो मन में संरक्षित रहती हैं।", "ejemplo": "क्या यहाँ सच में यादें बेची जाती हैं?" }, { "termino": "शीशी", "explicacion": "पात्र, आमतौर पर कांच का, ढक्कन वाला, चीज़ें रखने के लिए इस्तेमाल होता है।", "ejemplo": "इस नीली शीशी में पहली बार समुद्र देखने की अनुभूति है।" }, { "termino": "विनिमय", "explicacion": "एक चीज़ देकर दूसरी चीज़ बदले में लेने की क्रिया।", "ejemplo": "लेकिन हम विनिमय भी स्वीकार करते हैं।" }, { "termino": "कौशल", "explicacion": "कुछ अच्छी तरह से करने की क्षमता या निपुणता।", "ejemplo": "इसमें तीन भाषाएँ धाराप्रवाह बोलने का कौशल है।" }], "expresiones_idiomaticas": [{ "termino": "जाने देना", "explicacion": "किसी चीज़ या व्यक्ति को खोने को स्वीकार करना; भावनात्मक रूप से अलग हो जाना।", "ejemplo": "उसने तय किया कि अब उसे जाने देने का समय आ गया है।" }, { "termino": "जगह बनाना", "explicacion": "कुछ नया घटित होने या आने के लिए अवसर या क्षमता पैदा करना।", "ejemplo": "अप्रत्याशित के लिए जगह बनाना।" }, { "termino": "हल्का महसूस करना", "explicacion": "भावनात्मक राहत महसूस करना, जैसे कोई बोझ हट गया हो।", "ejemplo": "ऐलेना बाज़ार से हल्का महसूस करते हुए बाहर निकली।" }], "funciones_comunicativas": [{ "termino": "स्थानों और स्थितियों का वर्णन करना", "explicacion": "किसी दृश्य या परिस्थिति की विस्तृत तस्वीर चित्रित करने के लिए भाषा का उपयोग करना।", "ejemplo": "उसके सामने एक चौक खुल गया जो तैरती हुई छोटी-छोटी रोशनियों से जगमगा रहा था।" }, { "termino": "जिज्ञासा व्यक्त करना और प्रश्न पूछना", "explicacion": "जानकारी प्राप्त करने या रुचि दिखाने के लिए प्रश्नवाचक संरचनाओं का उपयोग करना।", "ejemplo": "—क्या यहाँ सच में यादें बेची जाती हैं? / —और अगर कोई बेची हुई याद वापस पाना चाहे तो क्या होगा?" }, { "termino": "अतीत में घटनाओं के क्रम का वर्णन करना", "explicacion": "पहले घटित हुई क्रियाओं और घटनाओं का वर्णन करना, एक कालानुक्रमिक क्रम स्थापित करते हुए।", "ejemplo": "विक्रेता ने एक खाली शीशी ली और ऐलेना से अपनी आँखें बंद करने को कहा... कुछ सेकंड के बाद, एक सफेद रोशनी ने पात्र को भर दिया।" }], "palabras_clave": ["गली", "चौक", "बाज़ार", "यादें", "विक्रेता", "शीशियाँ", "पारदर्शी", "स्मृतियाँ", "भूल जाना", "उदास", "विनिमय", "सपना", "ध्यान केंद्रित करना", "कौशल", "धाराप्रवाहता", "हल्का", "भ्रम", "थकान", "आगे बढ़ना", "अप्रत्याशित"] }]
+        };
+
+        const esData = data.es[0];
+        const selector = document.getElementById('language-selector');
+        const contentArea = document.getElementById('content');
+        const mainTitle = document.getElementById('main-title');
+
+        function updateUI(targetLang) {
+            const targetData = data[targetLang][0];
+            const targetLangName = selector.options[selector.selectedIndex].text.split(' ')[0];
+            mainTitle.innerText = `Análisis Lingüístico: Español vs ${targetLangName}`;
+
+            contentArea.innerHTML = '';
+
+            // Section mapping with icons
+            const sections = [
+                { key: 'conectores_logicos', title: 'Conectores Lógicos', icon: 'fa-link' },
+                { key: 'verbos_y_adjetivos', title: 'Verbos y Adjetivos', icon: 'fa-bolt' },
+                { key: 'sustantivos_clave', title: 'Sustantivos Clave', icon: 'fa-book' },
+                { key: 'expresiones_idiomaticas', title: 'Expresiones Idiomáticas', icon: 'fa-comments' },
+                { key: 'funciones_comunicativas', title: 'Funciones Comunicativas', icon: 'fa-bullhorn' }
+            ];
+
+            sections.forEach(section => {
+                const accordionWrap = document.createElement('div');
+                accordionWrap.className = 'accordion-item';
+
+                // Header
+                const header = document.createElement('div');
+                header.className = 'section-header';
+                header.innerHTML = `
+                    <div class="header-content">
+                        <div class="icon-box">
+                            <i class="fas ${section.icon}"></i>
+                        </div>
+                        <div class="title-group">
+                            <h2>${section.title}</h2>
+                            <span class="target-label">${targetLangName}</span>
+                        </div>
+                    </div>
+                    <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span>
+                `;
+
+                // Content
+                const content = document.createElement('div');
+                content.className = 'section-content';
+
+                const esList = esData[section.key];
+                const targetList = targetData[section.key];
+
+                esList.forEach((item, index) => {
+                    const targetItem = targetList[index];
+                    const card = document.createElement('div');
+                    card.className = 'card animate';
+
+                    card.innerHTML = `
+                        <div class="term-group">
+                            <span class="term-es">${item.termino}</span>
+                            <span class="term-target">(${targetItem.termino})</span>
+                        </div>
+                        <div class="explanation-group">
+                            <span class="exp-es">${item.explicacion}</span>
+                            <span class="exp-target">${targetItem.explicacion}</span>
+                        </div>
+                        <div class="example-box">
+                            <span class="ex-es"><strong>ES:</strong> ${item.ejemplo}</span>
+                            <span class="ex-target"><strong>${targetLang.toUpperCase()}:</strong> ${targetItem.ejemplo}</span>
+                        </div>
+                    `;
+                    content.appendChild(card);
+                });
+
+                header.addEventListener('click', () => {
+                    const isActive = header.classList.toggle('active');
+                    content.classList.toggle('open');
+                });
+
+                accordionWrap.appendChild(header);
+                accordionWrap.appendChild(content);
+                contentArea.appendChild(accordionWrap);
+            });
+
+            // Keywords Section
+            const kwHeader = document.createElement('div');
+            kwHeader.className = 'section-header';
+            kwHeader.style.cursor = 'default';
+            kwHeader.innerHTML = `
+                <div class="header-content">
+                    <div class="icon-box">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="title-group">
+                        <h2>Palabras Clave</h2>
+                        <span class="target-label">Keywords</span>
+                    </div>
+                </div>
+            `;
+
+            const kwContainer = document.createElement('div');
+            kwContainer.className = 'keywords-container animate';
+            kwContainer.style.marginTop = '1rem';
+            kwContainer.style.background = 'rgba(255, 255, 255, 0.05)';
+
+            esData.palabras_clave.forEach((word, index) => {
+                const targetWord = targetData.palabras_clave[index];
+                const tag = document.createElement('div');
+                tag.className = 'keyword-tag';
+                tag.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                        <span style="font-size: 0.9rem;">${word}</span>
+                        <span style="font-size: 0.75rem; opacity: 0.7; font-style: italic; color: var(--accent);">${targetWord}</span>
+                    </div>
+                `;
+                kwContainer.appendChild(tag);
+            });
+
+            contentArea.appendChild(kwHeader);
+            contentArea.appendChild(kwContainer);
+        }
+
+        selector.addEventListener('change', (e) => {
+            updateUI(e.target.value);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initial Load
+        updateUI('en');
+    </script>
+</body>
+
+</html>

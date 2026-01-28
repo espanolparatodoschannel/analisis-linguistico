@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Lingüístico Bilingüe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .foreign-text {
+            color: #4f46e5;
+            font-style: italic;
+        }
+
+        .spanish-text {
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .accordion-content.active {
+            opacity: 1;
+        }
+
+        .rotate-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .rotate-icon.active {
+            transform: rotate(180deg);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+    </style>
+</head>
+
+<body class="text-gray-700 antialiased pb-12">
+
+    <!-- Header -->
+    <header class="bg-indigo-700 text-white p-6 shadow-lg sticky top-0 z-50">
+        <div class="max-w-2xl mx-auto text-center">
+            <h1 id="main-title" class="text-2xl font-bold mb-2">Análisis Lingüístico Bilingüe</h1>
+            <div class="flex justify-center items-center gap-4 mt-4">
+                <span class="text-indigo-200 text-sm uppercase tracking-wide">Idioma:</span>
+                <select id="languageSelector"
+                    class="bg-indigo-600 text-white text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2.5 border-none shadow-inner cursor-pointer">
+                    <option value="fr" selected>Français</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto p-4 space-y-4 mt-4">
+
+        <!-- Intro Note -->
+        <div class="bg-white p-4 rounded-lg card-shadow border-l-4 border-indigo-500">
+            <p id="ui-instruccion" class="text-sm text-gray-600">
+                <i class="fas fa-info-circle mr-2 text-indigo-500"></i>
+                Iniciando...
+            </p>
+        </div>
+
+        <div id="content-area" class="space-y-4">
+            <!-- Dinamically generated sections -->
+        </div>
+
+    </main>
+
+    <script>
+        // Datos embebidos para evitar errores de CORS (Offline Friendly)
+        const allData = {
+            "es": {
+                "titulo": "Análisis Lingüístico Bilingüe",
+                "ui": {
+                    "conectores": "Conectores lógicos",
+                    "verbos": "Verbos y adjetivos",
+                    "sustantivos": "Sustantivos clave",
+                    "idiomaticas": "Expresiones idiomáticas",
+                    "funciones": "Funciones comunicativas",
+                    "palabras": "Palabras clave",
+                    "instruccion": "Toca las categorías abajo para explorar el vocabulario.",
+                    "ejemplo_abreviatura": "Ej"
+                },
+                "conectores_logicos": [
+                    { "termino": "Pero", "explicacion": "Se usa para introducir un contraste o una idea opuesta a la anterior.", "ejemplo": "Él es un joven muy trabajador, pero tiene un problema: no sabe cocinar." },
+                    { "termino": "Primero", "explicacion": "Indica el inicio de una secuencia de acciones o pasos en un proceso.", "ejemplo": "Primero, corta los tomates." },
+                    { "termino": "Sin embargo", "explicacion": "Conector adversativo que introduce una idea que compensa o matiza lo dicho anteriormente.", "ejemplo": "Sin embargo, Lucas recuerda las palabras de su padre: 'Nadie es experto el primer día'." },
+                    { "termino": "Finalmente", "explicacion": "Indica la conclusión de una serie de eventos o el último paso de un proceso.", "ejemplo": "Finalmente, llega el domingo. Lucas invita a sus padres a cenar." },
+                    { "termino": "Después", "explicacion": "Se utiliza para indicar que una acción ocurre a continuación de otra.", "ejemplo": "Después, pone el agua en la estufa." }
+                ],
+                "verbos_y_adjetivos": [
+                    { "termino": "Trabajador", "explicacion": "Adjetivo que describe a una persona que dedica mucho esfuerzo y tiempo a su labor.", "ejemplo": "Él es un joven muy trabajador." },
+                    { "termino": "Decidir", "explicacion": "Verbo que indica tomar una determinación definitiva sobre algo.", "ejemplo": "Lucas decide que es momento de cambiar." },
+                    { "termino": "Nervioso", "explicacion": "Estado de inquietud o falta de tranquilidad ante una situación nueva o difícil.", "ejemplo": "En la cocina, Lucas se siente nervioso." },
+                    { "termino": "Practicar", "explicacion": "Realizar una actividad de forma continuada para mejorar o aprender una habilidad.", "ejemplo": "Durante tres semanas, Lucas practica todas las noches." },
+                    { "termino": "Increíble", "explicacion": "Algo que destaca por ser excelente, sorprendente o muy bueno.", "ejemplo": "¡Lucas, esto es increíble! El sabor es delicioso." }
+                ],
+                "sustantivos_clave": [
+                    { "termino": "Receta", "explicacion": "Conjunto de instrucciones para preparar un plato de cocina.", "ejemplo": "Él prepara su mejor receta de pasta con salsa roja." },
+                    { "termino": "Esfuerzo", "explicacion": "Empleo enérgico del vigor o actividad del ánimo para vencer dificultades.", "ejemplo": "Él sabe que con esfuerzo y mucha paciencia, puede lograr cualquier meta." },
+                    { "termino": "Avance", "explicacion": "Progreso o mejora en un proceso o aprendizaje.", "ejemplo": "No es perfecto, pero es un avance." },
+                    { "termino": "Superación", "explicacion": "Acción de sobrepasar un límite o mejorar las propias capacidades.", "ejemplo": "Lucas comprende que la superación personal no es ganar una competencia." }
+                ],
+                "expresiones_idiomaticas": [
+                    { "termino": "La práctica es la clave", "explicacion": "Significa que la repetición y el ejercicio constante son fundamentales para dominar cualquier habilidad.", "ejemplo": "Lucas recuerda las palabras de su padre: 'La práctica es la clave'." },
+                    { "termino": "No se rinde", "explicacion": "Locución verbal que indica perseverancia y negación a abandonar un objetivo a pesar de las dificultades.", "ejemplo": "Pero Lucas no se rinde. Él aprende a usar differentes especias." },
+                    { "termino": "Tener miedo", "explicacion": "Sentir temor o inseguridad ante una situación o posible error.", "ejemplo": "Él ya no tiene miedo de cometer errores." }
+                ],
+                "funciones_comunicativas": [
+                    { "termino": "Justificar una acción", "explicacion": "Estructura para explicar el porqué de una decisión.", "ejemplo": "Lucas decide que es momento de cambiar. Él quiere aprender a cocinar comida saludable." },
+                    { "termino": "Expresar orgullo o satisfacción", "explicacion": "Frases para demostrar alegría por un logro propio.", "ejemplo": "Lucas sirve la comida con mucho orgullo." },
+                    { "termino": "Elogiar o valorar positivamente", "explicacion": "Expresiones para resaltar las cualidades de algo o alguien.", "ejemplo": "Su madre prueba la pasta y dice: '¡Lucas, esto es increíble!'" }
+                ],
+                "palabras_clave": [
+                    { "es": "Ciudad", "desc": "Centro urbano" }, { "es": "Cocinar", "desc": "Preparar alimentos" }, { "es": "Saludable", "desc": "Bueno para la salud" }, { "es": "Nervioso", "desc": "Inquieto" }, { "es": "Receta", "desc": "Instrucciones de cocina" }, { "es": "Cuidar", "desc": "Poner atención" }, { "es": "Sabor", "desc": "Gusto de la comida" }, { "es": "Avance", "desc": "Progreso" }, { "es": "Practicar", "desc": "Ejercitar" }, { "es": "Sucia", "desc": "Que tiene suciedad" }, { "es": "Paz", "desc": "Tranquilidad" }, { "es": "Invitar", "desc": "Convidar a alguien" }, { "es": "Orgullo", "desc": "Satisfacción propia" }, { "es": "Increíble", "desc": "Extraordinario" }, { "es": "Esfuerzo", "desc": "Trabajo duro" }, { "es": "Paciencia", "desc": "Calma para esperar" }, { "es": "Meta", "desc": "Objetivo final" }, { "es": "Error", "desc": "Equivocación" }, { "es": "Aprender", "desc": "Adquirir conocimiento" }, { "es": "Delicioso", "desc": "Sabor muy rico" }
+                ]
+            },
+            "en": {
+                "titulo": "Bilingual Linguistic Analysis",
+                "ui": {
+                    "conectores": "Logical Connectors",
+                    "verbos": "Verbs and Adjectives",
+                    "sustantivos": "Key Nouns",
+                    "idiomaticas": "Idiomatic Expressions",
+                    "funciones": "Communicative Functions",
+                    "palabras": "Keywords",
+                    "instruccion": "Tap the categories below to explore the vocabulary.",
+                    "ejemplo_abreviatura": "Ex"
+                },
+                "conectores_logicos": [
+                    { "termino": "But", "explicacion": "Used to introduce a contrast or an idea opposite to the previous one.", "ejemplo": "He is a very hardworking young man, but he has a problem: he doesn't know how to cook." },
+                    { "termino": "First", "explicacion": "Indicates the start of a sequence of actions or steps in a process.", "ejemplo": "First, he cuts the tomatoes." },
+                    { "termino": "However", "explicacion": "An adversative connector that introduces an idea that qualifies or balances what was previously stated.", "ejemplo": "However, Lucas remembers his father's words: 'No one is an expert on the first day'." },
+                    { "termino": "Finally", "explicacion": "Indicates the conclusion of a series of events or the last step of a process.", "ejemplo": "Finally, Sunday arrives. Lucas invites his parents to dinner." },
+                    { "termino": "Then", "explicacion": "Used to indicate that an action occurs immediately after another.", "ejemplo": "Then, he puts the water on the stove." }
+                ],
+                "verbos_y_adjetivos": [
+                    { "termino": "Hardworking", "explicacion": "Adjective describing a person who puts a lot of effort and time into their work.", "ejemplo": "He is a very hardworking young man." },
+                    { "termino": "Decide", "explicacion": "Verb indicating the act of making a final determination about something.", "ejemplo": "Lucas decides it is time for a change." },
+                    { "termino": "Nervous", "explicacion": "A state of worry or lack of tranquility when facing a new or difficult situation.", "ejemplo": "In the kitchen, Lucas feels nervous." },
+                    { "termino": "Practice", "explicacion": "To perform an activity regularly to improve or learn a skill.", "ejemplo": "For three weeks, Lucas practices every night." },
+                    { "termino": "Incredible", "explicacion": "Something that stands out for being excellent, surprising, or very good.", "ejemplo": "Lucas, this is incredible! The flavor is delicious." }
+                ],
+                "sustantivos_clave": [
+                    { "termino": "Recipe", "explicacion": "A set of instructions for preparing a specific food dish.", "ejemplo": "He prepares his best recipe for pasta with red sauce." },
+                    { "termino": "Effort", "explicacion": "The energetic use of willpower or activity to overcome difficulties.", "ejemplo": "He knows that with effort and a lot of patience, he can achieve any goal." },
+                    { "termino": "Progress", "explicacion": "Improvement or positive development in a process or learning journey.", "ejemplo": "It's not perfect, but it's progress." },
+                    { "termino": "Self-improvement", "explicacion": "The act of surpassing one's limits or improving one's own abilities.", "ejemplo": "Lucas understands that self-improvement is not about winning a competition." }
+                ],
+                "expresiones_idiomaticas": [
+                    { "termino": "Practice makes perfect", "explicacion": "Means that repetition and constant exercise are fundamental to mastering any skill.", "ejemplo": "Lucas remembers his father's words: 'Practice makes perfect'." },
+                    { "termino": "Doesn't give up", "explicacion": "A phrase indicating perseverance and refusal to abandon an objective despite difficulties.", "ejemplo": "But Lucas doesn't give up. He learns to use different spices." },
+                    { "termino": "To be afraid", "explicacion": "To feel fear or insecurity regarding a situation or a possible mistake.", "ejemplo": "He is no longer afraid of making mistakes." }
+                ],
+                "funciones_comunicativas": [
+                    { "termino": "Justifying an action", "explicacion": "Structure to explain the reason behind a decision.", "ejemplo": "Lucas decides it is time for a change. He wants to learn to cook healthy food." },
+                    { "termino": "Expressing pride or satisfaction", "explicacion": "Phrases to show joy for a personal achievement.", "ejemplo": "Lucas serves the food with great pride." },
+                    { "termino": "Praising or valuing positively", "explicacion": "Expressions to highlight the qualities of something or someone.", "ejemplo": "His mother tastes the pasta and says: 'Lucas, this is incredible!'" }
+                ],
+                "palabras_clave": [
+                    { "es": "City", "desc": "Urban center" }, { "es": "Cook", "desc": "To prepare food" }, { "es": "Healthy", "desc": "Good for health" }, { "es": "Nervous", "desc": "Anxious / Restless" }, { "es": "Recipe", "desc": "Cooking instructions" }, { "es": "Take care", "desc": "To pay attention" }, { "es": "Flavor", "desc": "Taste of the food" }, { "es": "Progress", "desc": "Advancement" }, { "es": "Practice", "desc": "To exercise a skill" }, { "es": "Dirty", "desc": "Unclean" }, { "es": "Peace", "desc": "Tranquility" }, { "es": "Invite", "desc": "To ask someone over" }, { "es": "Pride", "desc": "Self-satisfaction" }, { "es": "Incredible", "desc": "Extraordinary" }, { "es": "Effort", "desc": "Hard work" }, { "es": "Patience", "desc": "Calmness while waiting" }, { "es": "Goal", "desc": "Final objective" }, { "es": "Error", "desc": "Mistake" }, { "es": "Learn", "desc": "To acquire knowledge" }, { "es": "Delicious", "desc": "Tasty" }
+                ]
+            },
+            "fr": {
+                "titulo": "Analyse Linguistique Bilingue",
+                "ui": {
+                    "conectores": "Connecteurs logiques",
+                    "verbos": "Verbes et adjectifs",
+                    "sustantivos": "Noms clés",
+                    "idiomaticas": "Expressions idiomatiques",
+                    "funciones": "Fonctions communicatives",
+                    "palabras": "Mots-clés",
+                    "instruccion": "Touchez les catégories ci-dessous pour explorer le vocabulaire.",
+                    "ejemplo_abreviatura": "Ex"
+                },
+                "conectores_logicos": [
+                    { "termino": "Mais", "explicacion": "Utilisé pour introduire un contraste ou une idée opposée à la précédente.", "ejemplo": "C'est un jeune homme très travailleur, mais il a un problema : il ne sait pas cuisiner." },
+                    { "termino": "D'abord", "explicacion": "Indique le début d'une séquence d'actions ou d'étapes dans un processus.", "ejemplo": "D'abord, il coupe les tomates." },
+                    { "termino": "Pourtant", "explicacion": "Connecteur d'opposition qui introduit une idea venant nuancer ou compenser ce qui a été dit auparavant.", "ejemplo": "Pourtant, Lucas se souvient des paroles de son père : 'Personne n'est expert le premier jour'." },
+                    { "termino": "Enfin", "explicacion": "Indique la conclusion d'une série d'événements ou la dernière étape d'un processus.", "ejemplo": "Enfin, dimanche arrive. Lucas invite ses parents à dîner." },
+                    { "termino": "Ensuite", "explicacion": "Utilisé pour indiquer qu'une action se produit juste après une autre.", "ejemplo": "Ensuite, il met l'eau sur la cuisinière." }
+                ],
+                "verbos_y_adjetivos": [
+                    { "termino": "Travailleur", "explicacion": "Adjectif décrivant une personne qui consacre beaucoup d'efforts et de temps à sa tâche.", "ejemplo": "C'est un jeune homme très travailleur." },
+                    { "termino": "Décider", "explicacion": "Verbe indiquant le fait de prendre une décision définitive sur quelque chose.", "ejemplo": "Lucas décide qu'il est temps de changer." },
+                    { "termino": "Stressé", "explicacion": "État d'inquiétude ou manque de tranquillité face à une situation nouvelle ou difficile.", "ejemplo": "Dans la cuisine, Lucas se sent stressé." },
+                    { "termino": "S'entraîner", "explicacion": "Pratiquer une activité de manière régulière pour s'améliorer ou acquérir une compétence.", "ejemplo": "Pendant tres semaines, Lucas s'entraîne tous les soirs." },
+                    { "termino": "Incroyable", "explicacion": "Quelque chose qui se distingue par son excellence, son aspect surprenant ou sa qualité.", "ejemplo": "Lucas, c'est incroyable ! Le goût est délicieux." }
+                ],
+                "sustantivos_clave": [
+                    { "termino": "Recette", "explicacion": "Ensemble d'instructions pour préparer un plat de cuisine.", "ejemplo": "Il prépare sa meilleure recette de pâtes à la sauce rouge." },
+                    { "termino": "Effort", "explicacion": "Emploi énergique de la volonté ou de l'activité pour surmonter des difficultés.", "ejemplo": "Il sait qu'avec des efforts et beaucoup de patience, il peut atteindre n'importe quel but." },
+                    { "termino": "Progrès", "explicacion": "Amélioration ou évolution positive dans un processus ou un apprentissage.", "ejemplo": "Ce n'est pas parfait, pero c'est un progrès." },
+                    { "termino": "Dépassement de soi", "explicacion": "Action de surpasser ses limites ou d'améliorer ses propres capacités.", "ejemplo": "Lucas comprend que le dépassement de soi n'est pas une compétition contre les autres." }
+                ],
+                "expresiones_idiomaticas": [
+                    { "termino": "C'est en forgeant qu'on devient forgeron", "explicacion": "Signifie que la répétition et l'exercice constant sont fondamentaux pour maîtriser une compétence.", "ejemplo": "Lucas se souvient des paroles de son père : 'La práctica es la clave'." },
+                    { "termino": "Il ne baisse pas les bras", "explicacion": "Locution indiquant la persévérance et le refus d'abandonner un objectif malgré les obstacles.", "ejemplo": "Mais Lucas ne baisse pas les bras. Il apprend à utiliser differentes épices." },
+                    { "termino": "Avoir peur", "explicacion": "Ressentir de l'appréhension ou de l'insécurité face à una situation ou à une erreur potentielle.", "ejemplo": "Il n'a plus peur de commettre des erreurs." }
+                ],
+                "funciones_comunicativas": [
+                    { "termino": "Justifier une action", "explicacion": "Structure pour expliquer la raison d'une décision.", "ejemplo": "Lucas décide qu'il est temps de changer. Il veut apprendre à cuisiner sainement." },
+                    { "termino": "Exprimer de la fierté ou de la satisfaction", "explicacion": "Phrases pour démontrer la joie d'une réussite personnelle.", "ejemplo": "Lucas sert le plat avec beaucoup de fierté." },
+                    { "termino": "Féliciter o valoriser positivement", "explicacion": "Expressions pour souligner les qualités de quelque chose ou de quelqu'un.", "ejemplo": "Sa mère goûte les pâtes et dit : 'Lucas, c'est incroyable !'" }
+                ],
+                "palabras_clave": [
+                    { "es": "Ville", "desc": "Centre urbain" }, { "es": "Cuisiner", "desc": "Préparer à manger" }, { "es": "Sain", "desc": "Bon pour la santé" }, { "es": "Stressé", "desc": "Inquiet / Nerveux" }, { "es": "Recette", "desc": "Instructions de cuisine" }, { "es": "Prendre soin", "desc": "Faire attention" }, { "es": "Goût", "desc": "Saveur de la nourriture" }, { "es": "Progrès", "desc": "Avancement" }, { "es": "S'entraîner", "desc": "Pratiquer" }, { "es": "Sale", "desc": "Qui n'est pas propre" }, { "es": "Paix", "desc": "Tranquillité" }, { "es": "Invitar", "desc": "Convier quelqu'un" }, { "es": "Fierté", "desc": "Satisfaction personnelle" }, { "es": "Incroyable", "desc": "Extraordinaire" }, { "es": "Effort", "desc": "Travail acharné" }, { "es": "Patience", "desc": "Calme pour attendre" }, { "es": "Objectif", "desc": "But final" }, { "es": "Erreur", "desc": "Faute / Méprise" }, { "es": "Apprendre", "desc": "Acquérir des connaissances" }, { "es": "Délicieux", "desc": "Goût savoureux" }
+                ]
+            }
+        };
+
+        let esData = allData.es;
+        let foreignData = {};
+
+        function loadLanguage(lang) {
+            foreignData = allData[lang];
+            updateUI();
+        }
+
+        function updateUI() {
+            // Actualizar títulos e instrucciones
+            document.getElementById("main-title").innerHTML = `${esData.titulo}<br><span class="text-lg font-medium italic opacity-90">${foreignData.titulo}</span>`;
+            document.getElementById("ui-instruccion").innerHTML = `<i class="fas fa-info-circle mr-2 text-indigo-500"></i>${esData.ui.instruccion}<br><span class="foreign-text text-xs opacity-80 ml-6 block mt-1">${foreignData.ui.instruccion}</span>`;
+
+            const contentArea = document.getElementById("content-area");
+            contentArea.innerHTML = "";
+
+            const sections = [
+                { id: "sec1", key: "conectores_logicos", icon: "fas fa-link", titleKey: "conectores" },
+                { id: "sec2", key: "verbos_y_adjetivos", icon: "fas fa-bolt", titleKey: "verbos" },
+                { id: "sec3", key: "sustantivos_clave", icon: "fas fa-book", titleKey: "sustantivos" },
+                { id: "sec4", key: "expresiones_idiomaticas", icon: "fas fa-comments", titleKey: "idiomaticas" },
+                { id: "sec5", key: "funciones_comunicativas", icon: "fas fa-bullhorn", titleKey: "funciones" }
+            ];
+
+            sections.forEach(sec => {
+                const sectionHTML = createSection(sec);
+                contentArea.insertAdjacentHTML('beforeend', sectionHTML);
+            });
+
+            // Sección especial para Palabras Clave
+            contentArea.insertAdjacentHTML('beforeend', createKeywordsSection());
+        }
+
+        function createSection(sec) {
+            const esList = esData[sec.key];
+            const forList = foreignData[sec.key];
+            const esTitle = esData.ui[sec.titleKey];
+            const forTitle = foreignData.ui[sec.titleKey];
+
+            let itemsHTML = "";
+            esList.forEach((item, i) => {
+                const forItem = forList[i];
+                itemsHTML += `
+                    <div class="bg-white p-4 rounded border border-gray-200">
+                        <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 mb-2">
+                            <span class="spanish-text text-lg">${item.termino}</span>
+                            <span class="foreign-text text-base">(${forItem.termino})</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">
+                            ${item.explicacion}
+                            <br>
+                            <span class="foreign-text text-xs block mt-1 opacity-80">${forItem.explicacion}</span>
+                        </p>
+                        <div class="bg-indigo-50 p-3 rounded text-sm border-l-2 border-indigo-400">
+                            <p class="mb-1"><strong class="text-indigo-900">${esData.ui.ejemplo_abreviatura}:</strong> ${item.ejemplo}</p>
+                            <p class="italic text-indigo-800"><strong class="not-italic">${foreignData.ui.ejemplo_abreviatura}:</strong> ${forItem.ejemplo}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            return `
+                <div class="bg-white rounded-lg card-shadow overflow-hidden">
+                    <button onclick="toggleAccordion('${sec.id}')" class="w-full px-5 py-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors focus:outline-none">
+                        <div class="text-left flex items-center gap-3">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600">
+                                <i class="${sec.icon}"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800">${esTitle}</h3>
+                                <p class="text-xs text-indigo-600 font-medium">${forTitle}</p>
+                            </div>
+                        </div>
+                        <i id="icon-${sec.id}" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    </button>
+                    <div id="${sec.id}" class="accordion-content bg-gray-50 border-t border-gray-100">
+                        <div class="p-5 space-y-4">
+                            ${itemsHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createKeywordsSection() {
+            const esList = esData.palabras_clave;
+            const forList = foreignData.palabras_clave;
+            const esTitle = esData.ui.palabras;
+            const forTitle = foreignData.ui.palabras;
+
+            let gridHTML = "";
+            esList.forEach((item, i) => {
+                const forItem = forList[i];
+                gridHTML += `
+                    <div class="bg-white p-3 rounded border border-gray-200 flex flex-col">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-1 mb-1">
+                            <span class="font-semibold text-gray-800">${item.es}</span>
+                            <span class="foreign-text">${forItem.es}</span>
+                        </div>
+                        <div class="text-xs text-center mt-1">
+                            <p class="text-gray-500">${item.desc}</p>
+                            <p class="foreign-text opacity-70 italic">${forItem.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            return `
+                <div class="bg-white rounded-lg card-shadow overflow-hidden">
+                    <button onclick="toggleAccordion('sec-kw')" class="w-full px-5 py-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors focus:outline-none">
+                        <div class="text-left flex items-center gap-3">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800">${esTitle}</h3>
+                                <p class="text-xs text-indigo-600 font-medium">${forTitle}</p>
+                            </div>
+                        </div>
+                        <i id="icon-sec-kw" class="fas fa-chevron-down text-gray-400 rotate-icon"></i>
+                    </button>
+                    <div id="sec-kw" class="accordion-content bg-gray-50 border-t border-gray-100">
+                        <div class="p-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                ${gridHTML}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleAccordion(sectionId) {
+            const content = document.getElementById(sectionId);
+            const icon = document.getElementById('icon-' + sectionId);
+
+            if (content.classList.contains('active')) {
+                content.style.maxHeight = null;
+                content.classList.remove('active');
+                if (icon) icon.classList.remove('active');
+            } else {
+                content.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+                if (icon) icon.classList.add('active');
+            }
+        }
+
+        document.getElementById("languageSelector").addEventListener("change", e => {
+            loadLanguage(e.target.value);
+        });
+
+        // Inicialización
+        loadLanguage("fr");
+    </script>
+
+</body>
+
+</html>

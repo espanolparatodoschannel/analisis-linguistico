@@ -1,0 +1,140 @@
+{
+    "meta": {
+        "titulo_historia": "Sprachanalyse",
+        "autor": "User",
+        "fecha": "2026-01-28"
+    },
+    "titulo": "Sprachanalyse",
+    "conectores_logicos": [
+        {
+            "termino": "Plötzlich",
+            "explicacion": "Zeitliche Konjunktion, die eine plötzliche oder unerwartete Wendung in der Handlung einleitet.",
+            "ejemplo": "Plötzlich verschwanden die Betonwände."
+        },
+        {
+            "termino": "Zum Beispiel",
+            "explicacion": "Konjunktion, die eine Erklärung oder einen spezifischen Fall zur Veranschaulichung einer allgemeinen Idee einleitet.",
+            "ejemplo": "Zum Beispiel enthält dieses blaue Glas das Gefühl, zum ersten Mal das Meer zu sehen."
+        },
+        {
+            "termino": "Aber",
+            "explicacion": "Adversative Konjunktion, die einen Gedanken einleitet, der einem vorher Gesagten widerspricht oder kontrastiert.",
+            "ejemplo": "Es war ein schöner Traum, aber ich wollte ihn nicht mehr."
+        },
+        {
+            "termino": "Nach",
+            "explicacion": "Zeitliche Konjunktion, die Nachzeitigkeit in einer Handlungsabfolge anzeigt.",
+            "ejemplo": "Nach ein paar Sekunden füllte ein weißes Licht den Behälter."
+        },
+        {
+            "termino": "Manchmal",
+            "explicacion": "Konjunktion, die Häufigkeit ausdrückt oder einen Gedanken einleitet, der nicht konstant, sondern gelegentlich ist.",
+            "ejemplo": "Manchmal muss man, um voranzukommen, das loslassen, was uns nicht mehr gehört."
+        }
+    ],
+    "verbos_y_adjetivos": [
+        {
+            "termino": "präsentierten",
+            "explicacion": "Verb in der Vergangenheit (3. Person Plural), das bedeutet, etwas der Öffentlichkeit zu zeigen oder vorzustellen.",
+            "ejemplo": "In den Glasregalen präsentierten die Verkäufer durchsichtige Gläser."
+        },
+        {
+            "termino": "makellos",
+            "explicacion": "Adjektiv, das etwas Perfektes, ohne jeden Fehler oder Mangel beschreibt.",
+            "ejemplo": "ein junger Mann, der einen makellosen grauen Anzug trug"
+        },
+        {
+            "termino": "wiederkehrend",
+            "explicacion": "Adjektiv, das etwas beschreibt, das sich wiederholt oder häufig wieder auftaucht.",
+            "ejemplo": "Elena erinnerte sich an einen wiederkehrenden Traum, den sie seit ihrer Kindheit hatte."
+        },
+        {
+            "termino": "loslassen",
+            "explicacion": "Verb im Infinitiv, das bedeutet, gehen zu lassen, zu befreien oder sich von etwas zu lösen.",
+            "ejemplo": "muss man das loslassen, was uns nicht mehr gehört."
+        }
+    ],
+    "sustantivos_clave": [
+        {
+            "termino": "Gasse",
+            "explicacion": "Schmale Straße, meist zwischen Gebäuden.",
+            "ejemplo": "Elena ging eine enge Gasse entlang."
+        },
+        {
+            "termino": "Erinnerungen",
+            "explicacion": "Erinnerungen, Bilder oder Eindrücke aus der Vergangenheit, die im Gedächtnis bewahrt werden.",
+            "ejemplo": "Verkaufen Sie hier wirklich Erinnerungen?"
+        },
+        {
+            "termino": "Glas",
+            "explicacion": "Behälter, meist aus Glas, mit Deckel, zum Aufbewahren von Dingen.",
+            "ejemplo": "Dieses blaue Glas enthält das Gefühl, zum ersten Mal das Meer zu sehen."
+        },
+        {
+            "termino": "Tausch",
+            "explicacion": "Handlung, bei der man eine Sache gibt und eine andere dafür erhält.",
+            "ejemplo": "Aber wir akzeptieren auch Tauschgeschäfte."
+        },
+        {
+            "termino": "Fähigkeit",
+            "explicacion": "Kapazität oder Geschicklichkeit, etwas gut zu machen.",
+            "ejemplo": "Dieses enthält die Fähigkeit, drei Sprachen fließend zu sprechen."
+        }
+    ],
+    "expresiones_idiomaticas": [
+        {
+            "termino": "loslassen",
+            "explicacion": "Akzeptieren, etwas oder jemanden zu verlieren; sich emotional lösen.",
+            "ejemplo": "Sie entschied, dass es Zeit war, es loszulassen."
+        },
+        {
+            "termino": "Platz schaffen",
+            "explicacion": "Die Gelegenheit oder Fähigkeit schaffen, dass etwas Neues geschieht oder eintritt.",
+            "ejemplo": "Platz für das Unerwartete schaffen."
+        },
+        {
+            "termino": "sich leichter fühlen",
+            "explicacion": "Emotionale Erleichterung spüren, als wäre eine Last entfernt worden.",
+            "ejemplo": "Elena verließ den Markt und fühlte sich leichter."
+        }
+    ],
+    "funciones_comunicativas": [
+        {
+            "termino": "Orte und Situationen beschreiben",
+            "explicacion": "Die Sprache nutzen, um ein detailliertes Bild einer Szenerie oder Umstände zu zeichnen.",
+            "ejemplo": "vor ihr öffnete sich ein Platz, beleuchtet von kleinen schwebenden Lichtern."
+        },
+        {
+            "termino": "Neugier ausdrücken und Fragen stellen",
+            "explicacion": "Fragestrukturen verwenden, um Informationen zu erhalten oder Interesse zu zeigen.",
+            "ejemplo": "\"Verkaufen Sie hier wirklich Erinnerungen?\" / \"Und was passiert, wenn jemand eine verkaufte Erinnerung zurückhaben möchte?\""
+        },
+        {
+            "termino": "Eine Abfolge von Ereignissen in der Vergangenheit erzählen",
+            "explicacion": "Handlungen und Geschehnisse berichten, die früher stattfanden, und eine zeitliche Ordnung herstellen.",
+            "ejemplo": "Der Verkäufer nahm ein leeres Glas und bat Elena, die Augen zu schließen... Nach ein paar Sekunden füllte ein weißes Licht den Behälter."
+        }
+    ],
+    "palabras_clave": [
+        "Gasse",
+        "Platz",
+        "Markt",
+        "Erinnerungen",
+        "Verkäufer",
+        "Gläser",
+        "durchsichtig",
+        "Erinnerungen",
+        "vergessen",
+        "traurig",
+        "Tausch",
+        "Traum",
+        "konzentrierte",
+        "Fähigkeit",
+        "Flüssigkeit",
+        "leicht",
+        "Illusion",
+        "Müdigkeit",
+        "vorankommen",
+        "unerwartet"
+    ]
+}

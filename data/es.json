@@ -1,0 +1,140 @@
+{
+    "meta": {
+        "titulo_historia": "Análisis Lingüístico",
+        "autor": "Usuario",
+        "fecha": "2026-01-28"
+    },
+    "titulo": "Análisis Lingüístico",
+    "conectores_logicos": [
+        {
+            "termino": "De repente",
+            "explicacion": "Conector temporal que introduce un cambio brusco o inesperado en la acción.",
+            "ejemplo": "De repente, las paredes de concreto desaparecieron."
+        },
+        {
+            "termino": "Por ejemplo",
+            "explicacion": "Conector que introduce una aclaración o un caso específico para ilustrar una idea general.",
+            "ejemplo": "Por ejemplo, este frasco azul contiene la sensación de ver el mar por primera vez."
+        },
+        {
+            "termino": "Pero",
+            "explicacion": "Conector adversativo que introduce una idea que contrasta o se opone a lo dicho anteriormente.",
+            "ejemplo": "Era un sueño hermoso, pero ya no lo quería."
+        },
+        {
+            "termino": "Después de",
+            "explicacion": "Conector temporal que indica posterioridad en la secuencia de acciones.",
+            "ejemplo": "Después de unos segundos, una luz blanca llenó el recipiente."
+        },
+        {
+            "termino": "A veces",
+            "explicacion": "Conector que expresa frecuencia o introduce una idea que no es constante, sino ocasional.",
+            "ejemplo": "A veces, para avanzar, es necesario soltar lo que ya no nos pertenece."
+        }
+    ],
+    "verbos_y_adjetivos": [
+        {
+            "termino": "exhibían",
+            "explicacion": "Verbo en pasado (3ª persona plural) que significa mostrar o presentar algo al público.",
+            "ejemplo": "En los estantes de cristal, los vendedores exhibían frascos transparentes."
+        },
+        {
+            "termino": "impecable",
+            "explicacion": "Adjetivo que describe algo perfecto, sin ningún defecto o falta.",
+            "ejemplo": "un hombre joven que vestía un traje gris impecable"
+        },
+        {
+            "termino": "recurrente",
+            "explicacion": "Adjetivo que describe algo que se repite o vuelve a aparecer con frecuencia.",
+            "ejemplo": "Elena recordó un sueño recurrente que tenía desde niña."
+        },
+        {
+            "termino": "soltar",
+            "explicacion": "Verbo en infinitivo que significa dejar ir, liberar o desprenderse de algo.",
+            "ejemplo": "es necesario soltar lo que ya no nos pertenece."
+        }
+    ],
+    "sustantivos_clave": [
+        {
+            "termino": "callejón",
+            "explicacion": "Calle estrecha, generalmente entre edificios.",
+            "ejemplo": "Elena caminaba por un callejón estrecho."
+        },
+        {
+            "termino": "recuerdos",
+            "explicacion": "Memorias, imágenes o impresiones del pasado que se conservan en la mente.",
+            "ejemplo": "¿Realmente venden recuerdos aquí?"
+        },
+        {
+            "termino": "frasco",
+            "explicacion": "Recipiente, generalmente de vidrio, con tapa, usado para guardar cosas.",
+            "ejemplo": "Este frasco azul contiene la sensación de ver el mar por primera vez."
+        },
+        {
+            "termino": "intercambio",
+            "explicacion": "Acción de dar una cosa y recibir otra a cambio.",
+            "ejemplo": "Pero también aceptamos intercambios."
+        },
+        {
+            "termino": "habilidad",
+            "explicacion": "Capacidad o destreza para hacer algo bien.",
+            "ejemplo": "Este contiene la habilidad de hablar tres idiomas con fluidez."
+        }
+    ],
+    "expresiones_idiomaticas": [
+        {
+            "termino": "dejar ir",
+            "explicacion": "Aceptar perder algo o a alguien; desprenderse emocionalmente.",
+            "ejemplo": "Decidió que era el momento de dejarlo ir."
+        },
+        {
+            "termino": "abrir espacio",
+            "explicacion": "Crear la oportunidad o la capacidad para que algo nuevo suceda o entre.",
+            "ejemplo": "abrir espacio para lo inesperado."
+        },
+        {
+            "termino": "sentirse más ligera",
+            "explicacion": "Sentir alivio emocional, como si un peso hubiera sido removido.",
+            "ejemplo": "Elena salió del mercado sintiéndose más ligera."
+        }
+    ],
+    "funciones_comunicativas": [
+        {
+            "termino": "Describir lugares y situaciones",
+            "explicacion": "Utilizar el lenguaje para pintar una imagen detallada de un escenario o circunstancia.",
+            "ejemplo": "frente a ella se abrió una plaza iluminada por pequeñas luces flotantes."
+        },
+        {
+            "termino": "Expresar curiosidad y hacer preguntas",
+            "explicacion": "Usar estructuras interrogativas para obtener información o mostrar interés.",
+            "ejemplo": "—¿Realmente venden recuerdos aquí? / —¿Y qué pasa si alguien quiere recuperar un recuerdo que vendió?"
+        },
+        {
+            "termino": "Narrar una secuencia de eventos en el pasado",
+            "explicacion": "Relatar acciones y sucesos que ocurrieron con anterioridad, estableciendo un orden temporal.",
+            "ejemplo": "El vendedor tomó un frasco vacío y le pidió a Elena que cerrara los ojos... Después de unos segundos, una luz blanca llenó el recipiente."
+        }
+    ],
+    "palabras_clave": [
+        "callejón",
+        "plaza",
+        "mercado",
+        "recuerdos",
+        "vendedor",
+        "frascos",
+        "transparentes",
+        "memorias",
+        "olvidar",
+        "triste",
+        "intercambio",
+        "sueño",
+        "concentrara",
+        "habilidad",
+        "fluidez",
+        "ligera",
+        "ilusión",
+        "cansancio",
+        "avanzar",
+        "inesperado"
+    ]
+}

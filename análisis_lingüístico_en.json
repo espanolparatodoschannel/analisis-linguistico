@@ -1,0 +1,137 @@
+[
+    {
+        "titulo": "Linguistic Analysis",
+        "conectores_logicos": [
+            {
+                "termino": "Suddenly",
+                "explicacion": "Temporal connector that introduces a sudden or unexpected change in the action.",
+                "ejemplo": "Suddenly, the concrete walls disappeared."
+            },
+            {
+                "termino": "For example",
+                "explicacion": "Connector that introduces a clarification or a specific case to illustrate a general idea.",
+                "ejemplo": "For example, this blue jar contains the feeling of seeing the sea for the first time."
+            },
+            {
+                "termino": "But",
+                "explicacion": "Adversative connector that introduces an idea that contrasts or opposes what was said before.",
+                "ejemplo": "It was a beautiful dream, but she no longer wanted it."
+            },
+            {
+                "termino": "After",
+                "explicacion": "Temporal connector that indicates posteriority in the sequence of actions.",
+                "ejemplo": "After a few seconds, a white light filled the container."
+            },
+            {
+                "termino": "Sometimes",
+                "explicacion": "Connector that expresses frequency or introduces an idea that is not constant, but occasional.",
+                "ejemplo": "Sometimes, to move forward, it is necessary to let go of what no longer belongs to us."
+            }
+        ],
+        "verbos_y_adjetivos": [
+            {
+                "termino": "displayed",
+                "explicacion": "Verb in the past tense (3rd person plural) meaning to show or present something to the public.",
+                "ejemplo": "On the glass shelves, the vendors displayed transparent jars."
+            },
+            {
+                "termino": "impeccable",
+                "explicacion": "Adjective that describes something perfect, without any defect or flaw.",
+                "ejemplo": "a young man wearing an impeccable gray suit"
+            },
+            {
+                "termino": "recurrent",
+                "explicacion": "Adjective that describes something that repeats or reappears frequently.",
+                "ejemplo": "Elena remembered a recurrent dream she had had since childhood."
+            },
+            {
+                "termino": "let go",
+                "explicacion": "Verb in the infinitive meaning to release, free, or detach from something.",
+                "ejemplo": "it is necessary to let go of what no longer belongs to us."
+            }
+        ],
+        "sustantivos_clave": [
+            {
+                "termino": "alley",
+                "explicacion": "Narrow street, usually between buildings.",
+                "ejemplo": "Elena walked down a narrow alley."
+            },
+            {
+                "termino": "memories",
+                "explicacion": "Memories, images, or impressions of the past preserved in the mind.",
+                "ejemplo": "Do you really sell memories here?"
+            },
+            {
+                "termino": "jar",
+                "explicacion": "Container, usually made of glass, with a lid, used to store things.",
+                "ejemplo": "This blue jar contains the feeling of seeing the sea for the first time."
+            },
+            {
+                "termino": "exchange",
+                "explicacion": "The action of giving one thing and receiving another in return.",
+                "ejemplo": "But we also accept exchanges."
+            },
+            {
+                "termino": "skill",
+                "explicacion": "Ability or proficiency to do something well.",
+                "ejemplo": "This one contains the skill of speaking three languages fluently."
+            }
+        ],
+        "expresiones_idiomaticas": [
+            {
+                "termino": "let go",
+                "explicacion": "To accept losing something or someone; to detach emotionally.",
+                "ejemplo": "She decided it was time to let it go."
+            },
+            {
+                "termino": "make room",
+                "explicacion": "To create the opportunity or capacity for something new to happen or enter.",
+                "ejemplo": "make room for the unexpected."
+            },
+            {
+                "termino": "feel lighter",
+                "explicacion": "To feel emotional relief, as if a weight had been lifted.",
+                "ejemplo": "Elena left the market feeling lighter."
+            }
+        ],
+        "funciones_comunicativas": [
+            {
+                "termino": "Describing places and situations",
+                "explicacion": "Using language to paint a detailed picture of a setting or circumstance.",
+                "ejemplo": "in front of her, a plaza opened up, illuminated by small floating lights."
+            },
+            {
+                "termino": "Expressing curiosity and asking questions",
+                "explicacion": "Using interrogative structures to obtain information or show interest.",
+                "ejemplo": "\"Do you really sell memories here?\" / \"And what happens if someone wants to recover a memory they sold?\""
+            },
+            {
+                "termino": "Narrating a sequence of past events",
+                "explicacion": "Relating actions and events that occurred previously, establishing a temporal order.",
+                "ejemplo": "The vendor took an empty jar and asked Elena to close her eyes... After a few seconds, a white light filled the container."
+            }
+        ],
+        "palabras_clave": [
+            "alley",
+            "plaza",
+            "market",
+            "memories",
+            "vendor",
+            "jars",
+            "transparent",
+            "memories",
+            "forget",
+            "sad",
+            "exchange",
+            "dream",
+            "concentrated",
+            "skill",
+            "fluency",
+            "light",
+            "illusion",
+            "tiredness",
+            "advance",
+            "unexpected"
+        ]
+    }
+]
