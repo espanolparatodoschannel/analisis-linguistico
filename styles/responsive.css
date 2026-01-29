@@ -47,6 +47,19 @@
         --text-base: 0.875rem;
     }
 
+    /* Container adjustments for full-width header */
+    .app-container {
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+        /* Keep bottom padding */
+    }
+
+    /* Re-add padding to content since container lost it */
+    .content-grid {
+        padding: 0 var(--space-4);
+    }
+
     header {
         flex-direction: row;
         flex-wrap: wrap;
@@ -54,6 +67,16 @@
         padding: var(--space-3);
         justify-content: flex-start;
         /* Align start to keep logo and title close if needed, but flex-grow will handle fill */
+
+        /* Full width sticky adjustments */
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        top: 0;
+        /* Ensures it sticks to the very top */
     }
 
     /* Logo - Keep size constrained */
