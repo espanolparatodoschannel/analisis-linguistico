@@ -1,0 +1,18 @@
+Para agregar un nuevo idioma correctamente, necesitas hacer dos pasos:
+
+Subir el archivo JSON: Guardas tu archivo (ej. it.json) en la carpeta data.
+Registrarlo en languages-config.json: Tienes que abrir ese archivo y agregar una línea simple para que el menú sepa que existe.
+Ejemplo: Si agregas italiano, el menú no sabe que existe hasta que le dices:
+
+{
+  "code": "it",
+  "name": "Italiano",
+  "flag": "🇮🇹"
+}
+
+¿Por qué se hace así?
+Es por seguridad y orden. Si el sistema intentara "adivinar" qué archivos hay, podría intentar cargar archivos basura, copias de seguridad o archivos incompletos. De esta forma tienes control total de qué idiomas se muestran al público y cuáles están ocultos o en borrador.
+
+Nota extra: También hay un archivo 
+config.js
+ donde están los títulos de las secciones ("Verbos", "Sustantivos", etc.) traducidos. Si agregas un idioma nuevo y no lo pones ahí, no pasará nada grave, simplemente los títulos de los bloques saldrán en español, aunque el contenido de adentro sí saldrá en el nuevo idioma.

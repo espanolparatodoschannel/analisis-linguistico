@@ -6,23 +6,25 @@
   --text-primary: #ffffff;
   --text-secondary: #e8e8e8;
   --text-muted: #b3b3b3;
-  
+
   /* Acentos */
-  --accent-primary: #ffd60a;  /* Dorado */
-  --accent-secondary: #00d9ff; /* Cyan */
+  --accent-primary: #ffd60a;
+  /* Dorado */
+  --accent-secondary: #00d9ff;
+  /* Cyan */
   --accent-error: #ff4d4d;
-  
+
   /* Glassmorphism */
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-bg-hover: rgba(255, 255, 255, 0.12);
   --glass-border: rgba(255, 255, 255, 0.18);
   --shadow-lg: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   --blur-md: blur(12px);
-  
+
   /* Tipografía */
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
-  
+
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -30,18 +32,27 @@
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
   --text-3xl: 1.875rem;
-  
+
   /* Espaciado Sistema de 4px */
-  --space-1: 0.25rem; /* 4px */
-  --space-2: 0.5rem;  /* 8px */
-  --space-3: 0.75rem; /* 12px */
-  --space-4: 1rem;    /* 16px */
-  --space-5: 1.25rem; /* 20px */
-  --space-6: 1.5rem;  /* 24px */
-  --space-8: 2rem;    /* 32px */
-  --space-10: 2.5rem; /* 40px */
-  --space-12: 3rem;   /* 48px */
-  
+  --space-1: 0.25rem;
+  /* 4px */
+  --space-2: 0.5rem;
+  /* 8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.25rem;
+  /* 20px */
+  --space-6: 1.5rem;
+  /* 24px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px */
+
   /* Layout */
   --container-max-width: 1200px;
   --header-height: 80px;
@@ -53,4 +64,26 @@
   /* Transiciones */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease-in-out;
+}
+
+[data-theme="light"] {
+  --bg-dark: #f0f2f5;
+  --bg-gradient-start: #f8f9fa;
+  --bg-gradient-end: #e9ecef;
+  --text-primary: #1a1a1a;
+  /* Dark text for light mode */
+  --text-secondary: #4a4a4a;
+  --text-muted: #6c757d;
+
+  /* Acentos - A bit darker for visibility on light bg */
+  --accent-primary: #d4ac0d;
+  /* Golden darker */
+  --accent-secondary: #0097b2;
+  /* Cyan darker */
+
+  /* Glassmorphism Light */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-hover: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }

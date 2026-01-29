@@ -128,6 +128,37 @@ h1 {
     display: block;
 }
 
+/* Theme Toggle Button */
+.theme-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+    padding: var(--space-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease;
+
+    /* Position Absolute Top Right of Header */
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-6);
+    /* Match header padding */
+    z-index: 20;
+}
+
+.theme-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-primary);
+}
+
+.theme-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
 /* Language Selector */
 #language-selector {
     background: rgba(255, 255, 255, 0.1);
