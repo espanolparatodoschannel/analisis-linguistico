@@ -137,13 +137,7 @@
         font-size: var(--text-base);
     }
 
-    /* Theme Toggle Mobile Override */
-    .theme-btn {
-        top: var(--space-3);
-        /* Match header padding */
-        right: var(--space-3);
-        /* Match header padding */
-    }
+
 }
 
 /* Touch Targets for Mobile */

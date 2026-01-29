@@ -3,21 +3,19 @@ import { DataLoader } from './data-loader.js';
 import { UIRenderer } from './ui-renderer.js';
 import { Storage } from './storage.js';
 import { Accessibility } from './accessibility.js';
-import { ThemeManager } from './theme-manager.js';
+
 
 class App {
     constructor() {
         this.currentLanguage = 'es';
         this.languagesConfig = null;
-        this.themeManager = new ThemeManager();
+
     }
 
     async init() {
         console.log('Iniciando aplicación Analysis Linguistico...');
 
-        // Inicializar Theme Manager
-        this.themeManager.init();
-        this.updateThemeIcon();
+
 
         // Inicializar UI Renderer (buscando elementos en el DOM)
         UIRenderer.init();
@@ -64,32 +62,8 @@ class App {
         if (retryBtn) {
             retryBtn.addEventListener('click', () => this.loadContent(this.currentLanguage));
         }
-
-        // Botón de tema
-        const themeBtn = document.getElementById('theme-toggle');
-        if (themeBtn) {
-            themeBtn.addEventListener('click', () => {
-                this.themeManager.toggle();
-                this.updateThemeIcon();
-            });
-        }
     }
 
-    updateThemeIcon() {
-        const theme = this.themeManager.getTheme();
-        const sun = document.querySelector('.sun-icon');
-        const moon = document.querySelector('.moon-icon');
-
-        if (sun && moon) {
-            if (theme === 'dark') {
-                sun.classList.remove('hidden');
-                moon.classList.add('hidden');
-            } else {
-                sun.classList.add('hidden');
-                moon.classList.remove('hidden');
-            }
-        }
-    }
 
     async handleLanguageChange(newLang) {
         if (newLang === this.currentLanguage) return;
