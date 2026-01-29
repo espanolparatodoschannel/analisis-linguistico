@@ -226,7 +226,8 @@ h1 {
 
 .section-title-es {
     font-family: var(--font-heading);
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
+    /* Increased from text-lg */
     font-weight: 700;
     color: var(--text-primary);
 }
