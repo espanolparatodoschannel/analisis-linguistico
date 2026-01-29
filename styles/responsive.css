@@ -65,9 +65,10 @@
         flex-wrap: wrap;
         gap: var(--space-2);
         padding: var(--space-3);
-        justify-content: flex-start;
-        /* Align start to keep logo and title close if needed, but flex-grow will handle fill */
-
+        justify-content: space-between;
+        /* Changed to space-between */
+        position: sticky;
+        /* Helper reminder */
         /* Full width sticky adjustments */
         width: 100%;
         border-radius: 0;
@@ -82,6 +83,9 @@
     /* Logo - Keep size constrained */
     .logo-link {
         flex: 0 0 auto;
+        position: relative;
+        z-index: 2;
+        /* Ensure logo is clickable above title if overlap */
     }
 
     .logo-img {
@@ -90,19 +94,25 @@
         width: 50px;
     }
 
-    /* Title - Takes remaining space next to logo */
+    /* Title - Absolute Centering */
     header h1 {
-        flex: 1;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: var(--space-3);
+        /* Match header padding top */
         text-align: center;
-        margin-bottom: 0;
-        font-size: var(--text-lg);
+        margin: 0;
+        /* Increase Font Size */
+        font-size: 1.35rem;
+        /* Increased from text-lg */
+        line-height: 50px;
+        /* Match logo height for vertical alignment */
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        /* Helper for flex content */
-        margin-left: var(--space-2);
-        /* Optional: Add right margin to balance if desired, but request was 'free space' */
+        pointer-events: none;
+        /* Let clicks pass through if wide */
     }
 
     /* Selector - Full width on new line */
