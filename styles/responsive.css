@@ -65,8 +65,8 @@
         flex-wrap: wrap;
         gap: var(--space-2);
         padding: var(--space-3);
-        justify-content: space-between;
-        /* Changed to space-between */
+        justify-content: flex-start;
+        /* Revert to start */
         position: sticky;
         /* Helper reminder */
         /* Full width sticky adjustments */
@@ -94,25 +94,26 @@
         width: 50px;
     }
 
-    /* Title - Absolute Centering */
+    /* Title - Takes remaining space next to logo */
     header h1 {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: var(--space-3);
-        /* Match header padding top */
+        flex: 1;
+        /* Restore flex behavior */
+        position: static;
+        /* Reset absolute */
         text-align: center;
-        margin: 0;
-        /* Increase Font Size */
-        font-size: 1.35rem;
-        /* Increased from text-lg */
-        line-height: 50px;
-        /* Match logo height for vertical alignment */
+        margin: 0 0 0 var(--space-2);
+
+        /* Increase Font Size Further */
+        font-size: 1.5rem;
+        /* Increased from 1.35rem */
+        line-height: normal;
+        /* Reset line-height */
+
         display: flex;
         flex-direction: column;
         justify-content: center;
-        pointer-events: none;
-        /* Let clicks pass through if wide */
+        align-items: center;
+        pointer-events: auto;
     }
 
     /* Selector - Full width on new line */
