@@ -89,9 +89,9 @@
     }
 
     .logo-img {
-        height: 50px;
-        /* Reduced specific for mobile header */
-        width: 50px;
+        height: 65px;
+        /* Increased from 50px */
+        width: 65px;
     }
 
     /* Title - Takes remaining space next to logo */
