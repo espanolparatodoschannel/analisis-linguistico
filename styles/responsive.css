@@ -48,16 +48,55 @@
     }
 
     header {
-        flex-direction: column;
-        gap: var(--space-4);
-        text-align: center;
-        align-items: stretch;
-        /* Ensure children take full width if needed */
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        padding: var(--space-3);
+        justify-content: flex-start;
+        /* Align start to keep logo and title close if needed, but flex-grow will handle fill */
     }
 
-    /* Add space between title and selector specifically */
+    /* Logo - Keep size constrained */
+    .logo-link {
+        flex: 0 0 auto;
+    }
+
+    .logo-img {
+        height: 50px;
+        /* Reduced specific for mobile header */
+        width: 50px;
+    }
+
+    /* Title - Takes remaining space next to logo */
     header h1 {
-        margin-bottom: var(--space-2);
+        flex: 1;
+        text-align: center;
+        margin-bottom: 0;
+        font-size: var(--text-lg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* Helper for flex content */
+        margin-left: var(--space-2);
+        /* Optional: Add right margin to balance if desired, but request was 'free space' */
+    }
+
+    /* Selector - Full width on new line */
+    #selector-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-2);
+        padding-top: var(--space-2);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        /* Subtle separator */
+    }
+
+    #language-selector {
+        width: 100%;
+        /* Make selector full width for easier touch */
+        max-width: 300px;
     }
 
     .accordion-header {
